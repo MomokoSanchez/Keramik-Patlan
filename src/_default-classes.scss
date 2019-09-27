@@ -1,39 +1,17 @@
 @import "variables";
+@import "mixins";
 
 .default-margin {
-	margin: 20px;
-}
-
-.stripe {
-	position: absolute;
-	right: 0;
-	width: 50%;
-	height: 100%;
-	margin: 2*$default-margin $default-margin 0 0;
-	background-color: $main-yellow;
-	z-index: -1;
-}
-
-.column {
-	display: block;
-	width: 50%;
-	box-sizing: border-box;
-	padding: 0 2*$default-margin 0 $default-margin;
-	&.left {
-		left: 0;
-		float: left;
-		// height: 400px; // until further notice
-		// background-color: orange; // until further notice
-	}
-
-	&.right {
-		float: right;
-	}
+	margin: $default-margin;
 }
 
 .block {
-	display: flex;
-	padding-top: 2*$default-margin;
+	background-color: white;
+	padding: 2*$default-margin $default-margin 0 $default-margin;
+	.blockContent {
+		position: relative;
+		padding: $default-margin 0;
+	}
 }
 
 .shadow {
@@ -43,10 +21,6 @@
 }
 
 .image {
-    position: relative; // for z-index
-	margin-left: -$default-margin;
-	width: calc(100% + (3*#{$default-margin}));
-	z-index: 1;
 }
 
 .landscape {
@@ -57,11 +31,22 @@
 	´width: auto;
 }
 .header {
-	padding-top: 40px;
-    width: calc(100% + 80px);
-    margin-left: -40px;
+	&::after {
+		background: $main-yellow;
+	    content: "";
+	    display: block;
+	    width: 150px;
+	    height: 10px;
+	    margin-top: 15px;
+	}
+	.headerImg {
+		@include fullBgImg('../img/logo.jpg');
+		height: 100px;
+		width: 550px;
+	}
 }
 
 p {
 	padding: $default-margin 0;
+	margin: 0;
 }
