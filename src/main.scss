@@ -1,0 +1,62 @@
+// compile with sass --watch src\main.scss css\main.css --no-source-map
+@import "default-classes";
+@import "variables";
+@import "mixins";
+
+body {
+	nav {
+		background-color: $main-nav;
+		position: fixed;
+		width: $nav-width;
+		height: 100%;
+		font-family: 'Open Sans Condensed', sans-serif;
+
+		.nav-elements {
+			position: absolute;
+			right: 0;
+			top: 50%;
+    		transform: translateY(-30%);
+			width: $golden-ratio-large;
+			cursor: pointer;
+			font-size: 26px;
+			a {
+				display: block;
+				margin: 20px 0;
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.main {
+		font-family: 'Open Sans light', sans-serif;
+		line-height: 1.4;
+		float: right;
+		width: calc(100% - #{$nav-width}); // check % vs vw
+		// background-color: purple; // for testing
+		.logoContainer {
+			@include fullBgImg('../img/logo.jpg');
+			height: 100px;
+    		width: 550px;
+		}
+		.content {
+			position: relative;
+			width: 100%;
+			// background-color: green; // for testing
+			.info {
+				// background-color: blue;
+			}
+			.galerie {
+				// background-color: magenta;
+			}
+			.termine {
+				// background-color: red;
+
+			}
+			.kontakt {
+				// background-color: blue;
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+@import "variables";
+
+.default-margin {
+	margin: 20px;
+}
+
+.stripe {
+	position: absolute;
+	right: 0;
+	width: 50%;
+	height: 100%;
+	margin: 2*$default-margin $default-margin 0 0;
+	background-color: $main-yellow;
+	z-index: -1;
+}
+
+.column {
+	display: block;
+	width: 50%;
+	box-sizing: border-box;
+	padding: 0 2*$default-margin 0 $default-margin;
+	&.left {
+		left: 0;
+		float: left;
+		// height: 400px; // until further notice
+		// background-color: orange; // until further notice
+	}
+
+	&.right {
+		float: right;
+	}
+}
+
+.block {
+	display: flex;
+	padding-top: 2*$default-margin;
+}
+
+.shadow {
+	-webkit-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
+	-moz-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
+	box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
+}
+
+.image {
+    position: relative; // for z-index
+	margin-left: -$default-margin;
+	width: calc(100% + (3*#{$default-margin}));
+	z-index: 1;
+}
+
+.landscape {
+	height: auto;
+}
+
+.portrait {
+	´width: auto;
+}
+.header {
+	padding-top: 40px;
+    width: calc(100% + 80px);
+    margin-left: -40px;
+}
+
+p {
+	padding: $default-margin 0;
+}

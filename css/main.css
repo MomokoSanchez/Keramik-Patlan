@@ -1,0 +1,104 @@
+@charset "UTF-8";
+.default-margin {
+  margin: 20px;
+}
+
+.stripe {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  margin: 80px 40px 0 0;
+  background-color: #FFEEB5;
+  z-index: -1;
+}
+
+.column {
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 80px 0 40px;
+}
+.column.left {
+  left: 0;
+  float: left;
+}
+.column.right {
+  float: right;
+}
+
+.block {
+  display: flex;
+  padding-top: 80px;
+}
+
+.shadow {
+  -webkit-box-shadow: 1px 1px 5px 0px #c2c2c2;
+  -moz-box-shadow: 1px 1px 5px 0px #c2c2c2;
+  box-shadow: 1px 1px 5px 0px #c2c2c2;
+}
+
+.image {
+  position: relative;
+  margin-left: -40px;
+  width: calc(100% + (3*40px));
+  z-index: 1;
+}
+
+.landscape {
+  height: auto;
+}
+
+.portrait {
+  ´width: auto;
+}
+
+.header {
+  padding-top: 40px;
+  width: calc(100% + 80px);
+  margin-left: -40px;
+}
+
+p {
+  padding: 40px 0;
+}
+
+body nav {
+  background-color: #7D95AC;
+  position: fixed;
+  width: 30%;
+  height: 100%;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+body nav .nav-elements {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-30%);
+  width: 62%;
+  cursor: pointer;
+  font-size: 26px;
+}
+body nav .nav-elements a {
+  display: block;
+  margin: 20px 0;
+}
+body nav .nav-elements a:hover {
+  text-decoration: underline;
+}
+body .main {
+  font-family: "Open Sans light", sans-serif;
+  line-height: 1.4;
+  float: right;
+  width: calc(100% - 30%);
+}
+body .main .logoContainer {
+  background: url("../img/logo.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100px;
+  width: 550px;
+}
+body .main .content {
+  position: relative;
+  width: 100%;
+}

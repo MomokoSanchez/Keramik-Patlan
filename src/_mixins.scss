@@ -1,0 +1,6 @@
+@mixin fullBgImg($imgUrl) {
+	// make browser compatible
+	background: url($imgUrl) no-repeat center center;
+	background-size: cover;
+}
+
