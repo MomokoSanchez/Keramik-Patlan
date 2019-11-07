@@ -1,104 +1,134 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300, 600" rel="stylesheet">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		<nav>
+			<img class="navImg" src='./img/logo.png'></img>
 			<div class="nav-elements">
-				<a>Info</a>
-				<a>Termine</a>
-				<a>Kontakt</a>
+				<a onclick="showDefaultSections()" href="#home">Home</a>
+				<a onclick="showDefaultSections()" href="#info">About</a>
+				<a onclick="showDefaultSections()" href="#galerie">Galerie</a>
+				<a onclick="showDefaultSections()" href="#termine">Termine</a>
+				<a onclick="showDefaultSections()" href="#kontakt">Kontakt</a>
 			</div>
 		</nav>
 		<div class="main">
+			<header id="home">
+				<div class="titleImg"></div>
+				<div class="logoBackground"></div>
+				<div class="logoContainer"></div>
+			</header>
 			<div class="content">
-				<div class="title">
-					<div class="titleImg"></div>
-					<div class="logoContainer"></div>
-				</div>
-				<div class="block info">
+				<section class="block" id="info">
+					<div class="arrows"></div>
 					<div class="header">
-						<div class="headerImg"></div>
+						<img class="headerImg" src='./img/about.png'></img>
 					</div>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						Seit 1984 stellen wir in unserer Werkstatt handgetöpferte Steinzeug-Keramik her. Wir fertigen Geschirr für den täglichen Gebrauch, Vasen als Einzelstücke und Pflanztöpfe für den Garten. Charakteristisch an unserer Arbeit sind die Glasuren Blau und Grün mit all ihren Nuancen, teils dekoriert mit floralen Motiven auf weißem Hintergrund. Auf der Drehscheibe gedreht, mit den Händen geformt, werden die Gefäße zu einem haptischen Erlebnis, denn man erahnt die Fingerspuren des Töpfers auf jedem Stück. So soll unsere Freude an der Arbeit in das Objekt übergehen und Freude am Gebrauch bringen.
+						<img class="infoTextImg" src='./img/ingrid_u_carlos_patlan.png'></img>
 					</p>
-				</div>
-				<div class="block galerie">
+				</section>
+				<section class="block" id="galerie">
 					<div class="header">
-						<div class="headerImg"></div>
+						<img class="headerImg" src='./img/galerie.png'></img>
 					</div>
-					<!---
-						<img class="image landscape shadow left" src="img/placeholder.jpg"/>
-						<img class="image landscape shadow left" src="img/placeholder.jpg"/>
-
-						<img class="image logo right" src="img/logo.jpg">
-						<img class="image portrait shadow right" src="img/placeholder2.jpg"/>
-					-->
-				</div>
-				<div class="block termine">
+					<div class="imgBlock blockA">
+						<img class="image landscape shadow left" src="img/gallery/auflaufformen_gruen.jpg"/>
+						<img class="image landscape shadow left" src="img/gallery/brottopf.jpg"/>
+						<img class="image portrait shadow right" src="img/gallery/krug2.jpg"/>
+					</div>
+					<div class="imgBlock blockB">
+						<img class="image portrait shadow right" src="img/gallery/krug.jpg"/>
+						<img class="image landscape shadow left" src="img/gallery/tasse-teller.jpg"/>
+						<img class="image landscape shadow left" src="img/gallery/auflaufformen_gruen.jpg"/>
+					</div>
+				</section>
+				<section class="block" id="termine">
 					<div class="header">
-						<div class="headerImg"></div>
+						<img class="headerImg" src='./img/termine.png'></img>
 					</div>
 					<div class="blockContent">
-						<div class="termineImg"></div>
+						<div class="termineImg shadow"></div>
 						<div class="tableContainer">
-							<table>
-								<tbody>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-									<tr>
-										<td>25.06 - 28.06</td>
-										<td>Töpfermarkt in Diessen a. Ammersee</td>
-									</tr>
-								</tbody>
+							<table id="termineTable">
+								<tr data-from="525" data-to="526">
+									<td>25. - 26.05.</td>
+									<td><a href="https://lalling.de/leben-in-lalling/lallinger-toepfermarkt/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Lalling, Nby.<a/></td>
+								</tr>		
+								<tr data-from="530" data-to="602">
+									<td>30.05 - 02.06.</td>
+									<td><a href="https://www.diessen.de/kunst-kultur/diessener-toepfermarkt/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Diessen a. Ammersee</a></td>
+								</tr>			
+								<tr data-from="615" data-to="616">
+									<td>15. - 16.06.</td>
+									<td><a href="http://www.darmsheimer-töpfermarkt.de/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Darmsheim, Ba.-Wü.</a></td>
+								</tr>				
+								<tr data-from="2206" data-to="2306">
+									<td>22. - 23.06.</td>
+									<td><a href="https://www.wintonet.de/tm/">T&oumlpfermarkt in Frontenhausen, Nby.</a></td>
+								</tr>
+								<!--<tr data-from="2505" data-to="2605" target='_blank' rel="noopener noreferrer">
+									<td>29. - 30.06.</td>
+									<td><a href="http://www.hanau-neu-erleben.de/ek/markt/068135/index.html#anchor_10_23">Internationaler Keramikmarkt in Hanau</a></td>
+								</tr>-->
+								<tr data-from="720" data-to="721">
+									<td>20. - 21.07.</td>
+									<td><a href="http://www.marktniedergottsau.de" target='_blank' rel="noopener noreferrer">Kleiner Kunst- und Handwerkermarkt in Niedergottsau bei Marktl a. Inn</a></td>
+								</tr>
+								<tr data-from="727" data-to="728">
+									<td>27. - 28.07.</td>
+									<td><a href="http://www.seeshaupt-er-leben.de/events/kunsthandwerkermarkt/" target='_blank' rel="noopener noreferrer">Kunsthandwerkermarkt in Seeshaupt</a></td>
+								</tr>
+								<tr data-from="810" data-to="811">
+									<td>10. - 11.08.</td>
+									<td><a href="http://www.fuerstenfeld.de//index.php?page_id=48" target='_blank' rel="noopener noreferrer">Töpfer- und Kunsthandwerkermarkt in Fürstenfeldbruck</a></td>
+								</tr>
+								<tr data-from="824" data-to="825">
+									<td>24. - 25.08.</td>
+									<td><a href="http://www.murnau.de/de/toepfermarkt.html" target='_blank' rel="noopener noreferrer">Murnauer T&oumlpfermarkt</a></td>
+								</tr>
+								<!--<tr>
+									<td>01. - 02.09.</td>
+									<td><a href="https://nu.neu-ulm.de/de/neu-ulm-erleben/veranstaltungen/feste-maerkte/toepfermarkt/" target='_blank' rel="noopener noreferrer">Neu-Ulmer Töpfermarkt</a></td>
+								</tr>
+								-->
+								<tr data-from="907" data-to="908">
+									<td>07. - 08.09.</td>
+									<td><a href="http://www.kunstundhandwerk.info/toepfermarkt-passau/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Passau<a/></td>
+								</tr>
+								<tr data-from="914" data-to="915">
+									<td>14. - 15.09.</td>
+									<td><a href="http://www.neuburger-toepfermarkt.de" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Neuburg a. d. Donau </a></td>
+								</tr>
+								<tr data-from="1012" data-to="1013">
+									<td>12. - 13.10.</td>
+									<td><a href="http://www.vaterstetten.de/city_info/webaccessibility/index.cfm?region_id=276&waid=520&item_id=864207&link_id=213781419&fsize=1&contrast=0" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Vaterstetten bei M&uumlnchen</a></td>
+								</tr>	
+								<!--
+								<tr data-from="25-05" data-to="26-05">
+									<td>19. - 20.10.</td>
+									<td><a href="http://www.blutenburg.de/61.html">T&oumlpfermarkt in Schloss Blutenburg, M&uumlnchen</a></td>
+								</tr>
+								-->
+								<tr  data-from="1129" data-to="1224">
+									<td>29.11. - 24.12.</td>
+									<td><a href="http://www.schwabingerweihnachtsmarkt.de/" target='_blank' rel="noopener noreferrer">Schwabinger Weihnachtsmarkt in M&uumlnchen </a></td>
+								</tr>
 							</table>
 						</div>
 					</div>
-				</div>
-				<div class="block kontakt">
+				</section>
+				<section class="block" id="kontakt">
 					<div class="header">
-						<div class="headerImg"></div>
+						<img class="headerImg" src='./img/kontakt.png'></img>
 					</div>
 					<div class="blockContent">
-						<div class="kontaktImg"></div>
+						<div class="kontaktImg shadow"></div>
 						<p class="kontaktText">
 							Ingrid & Carlos Patlán<br/>
 							Damianstr. 25<br/>
@@ -110,13 +140,166 @@
 							Besuchen Sie unser gerne in unserer Keramikwerkstatt oder auf einem der Töpfermärkte.
 							<br/>
 							Wir haben keine geregelten Öffnungszeiten, sind aber unter der Woche normalerweise den ganzen Tag zu erreichen.
+							<img class="kontaktTextImg" src='./img/wir_freuen_uns_auf_ihren_besuch.png'></img>
 						</p>
 					</div>
-				</div>
-				<div class="block footer">
-					<p>&#169; made by momoko 2019</p>
-				</div>
+					<div class="map">
+						<script>
+							function initMap() {
+							  var daheim = {lat: 48.767046, lng: 13.021244};
+							  var map = new google.maps.Map(
+							      document.getElementsByClassName('map')[0], {zoom: 15, center: daheim});
+							  var marker = new google.maps.Marker({position: daheim, map: map});
+							}
+					    </script>
+					    <script async defer
+					    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNYH9H9M4k1_ftZN_oGKvxT4sLtFyKyVs&callback=initMap">
+					    </script>
+					</div>
+				</section>
+				<section class="block hidden" id="impressum">
+					<h2>IMPRESSUM</h2>
+					Angaben gem&auml;&szlig; 5 TMG:<br/>
+					Keramikwerkstatt Patlan GbR<br/>
+					Ingrid Hauck-Patlan, Carlos Patlan<br/>
+					<h3>Postanschrift:</h3>
+					Damianstr. 25<br/>
+					94557 Niederalteich<br/>
+					<h3>Kontakt:</h3>
+					Telefon: +49-9901-903840<br/>
+					E-Mail: info@keramik-patlan.de<br/>
+					<h3>Vertreten durch:</h3>
+					Gesch&auml;ftsf&uuml;hrer sind beide Inhaber<br/>
+					<h3>Umsatzsteuer-Identifikationsnummer</h3>
+					UStldNr. DE 130249090<br/><br/>
+					<h3>Urheberrechtliche Hinweise</h3>
+					Ingrid u. Carlos Patlan<br/>
+				</section>
+				<section class="block hidden" id="datenschutzerklaerung">
+					<h2>Datenschutzerkl&auml;rung</h2> 
+						<p>
+							Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:
+						</p>
+                        <p> 
+							Ingrid & Carlos Patlan <br />
+							Damianstr. 25<br />
+							94557 Niederalteich <br /><br />
+							Telefon: 09901-903840<br /><br />
+                        </p> 
+                        <br /><br /> 
+
+                        <h3>Ihre Betroffenenrechte</h3> 
+                        <p> 
+							Unter den angegebenen Kontaktdaten unseres Datenschutzbeauftragten k&ouml;nnen Sie jederzeit folgende Rechte aus&uuml;ben:
+							<ul>
+								<li>Auskunft &uuml;ber Ihre bei uns gespeicherten Daten und deren Verarbeitung,</li>
+								<li>Berichtigung unrichtiger personenbezogener Daten,</li>
+								<li>L&ouml;schung Ihrer bei uns gespeicherten Daten,</li>
+								<li>Einschr&auml;nkung der Datenverarbeitung, sofern wir Ihre Daten aufgrund gesetzlicher Pflichten noch nicht l&ouml;schen d&uuml;rfen,</li>
+								<li>Widerspruch gegen die Verarbeitung Ihrer Daten bei uns und</li>
+								<li>Daten&uuml;bertragbarkeit, sofern Sie in die Datenverarbeitung eingewilligt haben oder einen Vertrag mit uns abgeschlossen haben.</li>
+							</ul>
+							Sofern Sie uns eine Einwilligung erteilt haben, k&ouml;nnen Sie diese jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.
+							Sie k&ouml;nnen sich jederzeit mit einer Beschwerde an die f&uuml;r Sie zust&auml;ndige Aufsichtsbeh&ouml;rde wenden. Ihre zust&auml;ndige Aufsichtsbeh&ouml;rde richtet sich nach dem Bundesland Ihres Wohnsitzes, Ihrer Arbeit oder der mutmaĂźlichen Verletzung. Eine Liste der Aufsichtsbeh&ouml;rden (f&uuml;r den nicht&ouml;ffentlichen Bereich) mit Anschrift finden Sie unter: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.
+						</p> 
+						<h3>Kontakt</h3>
+						<p> 
+							Treten Sie bzgl. Fragen jeglicher Art per E-Mail mit uns in Kontakt, erteilen Sie uns zum Zwecke der Kontaktaufnahme Ihre freiwillige Einwilligung. Hierf&uuml;r ist die Angabe einer validen E-Mail-Adresse erforderlich. Diese dient der Zuordnung der Anfrage und der anschlieĂźenden Beantwortung derselben. Die Angabe weiterer Daten ist optional. Die von Ihnen gemachten Angaben werden zum Zwecke der Bearbeitung der Anfrage sowie f&uuml;r m&ouml;gliche Anschlussfragen gespeichert. Nach Erledigung der von Ihnen gestellten Anfrage werden personenbezogene Daten automatisch gel&ouml;scht.
+						</p> 
+						<h3>Zwecke der Datenverarbeitung durch die verantwortliche Stelle und Dritte</h3>
+						<p> 
+							Wir verarbeiten Ihre personenbezogenen Daten nur zu den in dieser Datenschutzerkl&auml;rung genannten Zwecken. Eine &Uuml;bermittlung Ihrer pers&ouml;nlichen Daten an Dritte zu anderen als den genannten Zwecken findet nicht statt. Wir geben Ihre pers&ouml;nlichen Daten nur an Dritte weiter, wenn:
+							<ul>
+								<li>Sie Ihre ausdr&uuml;ckliche Einwilligung dazu erteilt haben,</li>
+								<li>die Verarbeitung zur Abwicklung eines Vertrags mit Ihnen erforderlich ist,</li>
+								<li>die Verarbeitung zur Erf&uuml;llung einer rechtlichen Verpflichtung erforderlich ist,</li>
+							die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist und kein Grund zur Annahme besteht, dass Sie ein &uuml;berwiegendes schutzw&uuml;rdiges Interesse an der Nichtweitergabe Ihrer Daten haben.</li>
+							</ul>
+                        </p> 
+
+
+                        <h3>L&ouml;schung bzw. Sperrung der Daten</h3> 
+                        <p> 
+							Wir halten uns an die Grunds&auml;tze der Datenvermeidung und Datensparsamkeit. Wir speichern Ihre personenbezogenen Daten daher nur so lange, wie dies zur Erreichung der hier genannten Zwecke erforderlich ist oder wie es die vom Gesetzgeber vorgesehenen vielf&auml;ltigen Speicherfristen vorsehen. Nach Fortfall des jeweiligen Zweckes bzw. Ablauf dieser Fristen werden die entsprechenden Daten routinem&auml;Ăźig und entsprechend den gesetzlichen Vorschriften gesperrt oder gel&ouml;scht.
+                        </p> 
+                        <h3>Erfassung allgemeiner Informationen beim Besuch unserer Website</h3> 
+                        <p> 
+							Bei jedem Webseitenabruf werden Daten erfasst, die in den Logfiles des Servers und der Webanwendung gespeichert werden. Diese Informationen beinhalten etwa die Art des Webbrowsers, das verwendete Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und &auml;hnliches. Hierbei handelt es sich ausschlieĂźlich um Informationen, welche keine R&uuml;ckschl&uuml;sse auf Ihre Person zulassen.<br/>
+							Diese Informationen sind technisch notwendig, um von Ihnen angeforderte Inhalte von Webseiten korrekt auszuliefern und fallen bei Nutzung des Internets zwingend an. Sie werden insbesondere zu folgenden Zwecken verarbeitet:
+							<ul>
+								<li>Sicherstellung eines problemlosen Verbindungsaufbaus der Website,</li>
+								<li>Sicherstellung einer reibungslosen Nutzung unserer Website,</li>
+								<li>Auswertung der Systemsicherheit und -stabilit&auml;t sowie</li>
+								<li>zu weiteren administrativen Zwecken.</li>
+							</ul>
+							Die Verarbeitung Ihrer personenbezogenen Daten basiert auf unserem berechtigten Interesse aus den vorgenannten Zwecken zur Datenerhebung. Wir verwenden Ihre Daten nicht, um R&uuml;ckschl&uuml;sse auf Ihre Person zu ziehen. Empf&auml;nger der Daten sind nur die verantwortliche Stelle und ggf. Auftragsverarbeiter.<br/>
+							Anonyme Informationen dieser Art werden von uns ggfs. statistisch ausgewertet, um unseren Internetauftritt und die dahinterstehende Technik zu optimieren.
+                        </p> 
+                        <h3>Datenverarbeitung durch JavaScript-Bibliotheken</h3> 
+                        <p> 
+							Diese Webseite verwendet JavaScript-Bibliotheken externer Anbieter. Durch den Einsatz der JavaScript-Bibliotheken wird die Nutzbarkeit einzelner Funktionalit&auml;ten dieser Webseite &uuml;berhaupt erst erm&ouml;glicht, was wiederum dem Nutzer die Nutzung dieser Webseite erleichtert. Diese Webseite verwendet JavaScript-Code des Unternehmens LLC. NetDNA, 3575, Cahuenga Blvd Suite 630, Los Angeles, CA 90068, USA (BootstrapCDN), ferner jQuery, bereitgestellt durch den Drittanbieter jQuery Foundation. 
+							Es ist nicht auszuschlieĂźen, dass durch den Aufruf der Webseite personenbezogene Daten an die externen Anbieter &uuml;bertragen werden. Die Datenverarbeitung erfolgt auf der Grundlage berechtigter Interessen i.S. des Art. 6 Abs. 1 S. 1 f.) DSGVO. Nutzer k&ouml;nnen die &Uuml;bertragung verhindern, indem sie einen JavaScript-Blocker wie z.B. das Browser-Plugin "NoScript" (<a href="https://noscript.net/">https://noscript.net/</a>) installieren oder JavaScript durch Browsereinstellungen deaktivieren. Der Betreiber weist darauf hin, dass diese Option eine Nutzbarkeit der Webseite einschr&auml;nken kann. Weitere Informationen finden Nutzer unter <a href="https://www.bootstrapcdn.com/privacy-policy/">https://www.bootstrapcdn.com/privacy-policy/</a> bzw. <a href="https://jquery.org">https://jquery.org</a>.
+                        </p> 
+
+                        <h3>Verwendung von Google Analytics</h3> 
+                        <p> 
+							Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (folgend: Google). Google Analytics verwendet sog. â€žCookiesâ€ś, also Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Webseite durch Sie erm&ouml;glichen. Die durch das Cookie erzeugten Informationen &uuml;ber Ihre Benutzung dieser Webseite werden in der Regel an einen Server von Google in den USA &uuml;bertragen und dort gespeichert. Aufgrund der Aktivierung der IP-Anonymisierung auf diesen Webseiten, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europ&auml;ischen Union oder in anderen Vertragsstaaten des Abkommens &uuml;ber den Europ&auml;ischen Wirtschaftsraum zuvor gek&uuml;rzt. Nur in Ausnahmef&auml;llen wird die volle IP-Adresse an einen Server von Google in den USA &uuml;bertragen und dort gek&uuml;rzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Webseite auszuwerten, um Reports &uuml;ber die Webseitenaktivit&auml;ten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegen&uuml;ber dem Webseitenbetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser &uuml;bermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengef&uuml;hrt.<br/>
+							Die Zwecke der Datenverarbeitung liegen in der Auswertung der Nutzung der Website und in der Zusammenstellung von Reports &uuml;ber Aktivit&auml;ten auf der Website. Auf Grundlage der Nutzung der Website und des Internets sollen dann weitere verbundene Dienstleistungen erbracht werden. Die Verarbeitung beruht auf dem berechtigten Interesse des Webseitenbetreibers.
+							Sie k&ouml;nnen die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht s&auml;mtliche Funktionen dieser Website vollumf&auml;nglich werden nutzen k&ouml;nnen. Sie k&ouml;nnen dar&uuml;ber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Webseite bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verf&uuml;gbare Browser-Plugin herunterladen und installieren: <a href="http://tools.google.com/dlpage/gaoptout?hl=de">Browser Add On zur Deaktivierung von Google Analytics</a>.<br/>
+							Zus&auml;tzlich oder als Alternative zum Browser-Add-On k&ouml;nnen Sie das Tracking durch Google Analytics auf unseren Seiten unterbinden, indem Sie <a href="https://www.activemind.de/datenschutz/datenschutzhinweis-generator/ergebnis/#">diesen Link</a> anklicken. Dabei wird ein Opt-Out-Cookie auf Ihrem Ger&auml;t installiert. Damit wird die Erfassung durch Google Analytics f&uuml;r diese Website und f&uuml;r diesen Browser zuk&uuml;nftig verhindert, so lange das Cookie in Ihrem Browser installiert bleibt.<br/>
+							Verwendung von Scriptbibliotheken (Google Webfonts)
+							Um unsere Inhalte browser&uuml;bergreifend korrekt und grafisch ansprechend darzustellen, verwenden wir auf dieser Website Scriptbibliotheken und Schriftbibliotheken wie z. B. Google Webfonts (<a href="http://www.google.com/webfonts/">https://www.google.com/webfonts/</a>). Google Webfonts werden zur Vermeidung mehrfachen Ladens in den Cache Ihres Browsers &uuml;bertragen. Falls der Browser die Google Webfonts nicht unterst&uuml;tzt oder den Zugriff unterbindet, werden Inhalte in einer Standardschrift angezeigt.
+							Der Aufruf von Scriptbibliotheken oder Schriftbibliotheken l&ouml;st automatisch eine Verbindung zum Betreiber der Bibliothek aus. Dabei ist es theoretisch m&ouml;glich â€“ aktuell allerdings auch unklar ob und ggf. zu welchen Zwecken â€“ dass Betreiber entsprechender Bibliotheken Daten erheben.
+							Die Datenschutzrichtlinie des Bibliothekbetreibers Google finden Sie hier: <a href="https://www.google.com/policies/privacy/">https://www.google.com/policies/privacy/</a>
+                        </p> 
+						<p>Die Datenschutzerkl&auml;rung wurde u.a. mit dem <a href="https://www.activemind.de/datenschutz/datenschutzhinweis-generator/">Datenschutzerkl&auml;rungs-Generator der activeMind AG</a> erstellt.</p>
+				</section> 
+				<footer class="block" id="footer">
+					<p><span onclick="showSection('impressum')">Impressum</span> | <span onclick="showSection('datenschutzerklaerung')"><a href="#datenschutzerklaerung">Datenschutzerkl&auml;rung</a></span> | &#169; <span><a href="http://www.madebymomoko.com" target='_blank' rel="noopener noreferrer">MadeByMomoko</a></span> <script type="text/javascript"> document.write(new Date().getFullYear() ); </script></p>
+				</footer>
 			</div>
 		</div>
+    	<script>
+    		(function() {
+				const today = new Date,
+					day = ("0" + today.getDate()).slice(-2),
+					currentMonthDay = (today.getMonth()+1)+""+day,
+					table = document.getElementById("termineTable");
+
+				for (let i = 0; i < table.rows.length; i++) {
+					const row = table.rows[i],
+						from = row.dataset.from,
+						to = row.dataset.to;
+
+					if (currentMonthDay >= from) {
+						(i > 0) && table.rows[i-1].classList.remove("lastMarket");
+						if (currentMonthDay <= to) {
+							row.classList.add("isHappening");
+						} else {
+							row.classList.add("lastMarket");
+						}
+					}
+			   } 
+			})();
+
+			function showSection(section) {
+				const sections = document.getElementsByTagName("section");
+				for(let i = 0; i < sections.length; i++) {
+					sections[i].classList.add("hidden");
+				}
+				document.getElementById("home").classList.add("hidden");
+				document.getElementById(section).classList.remove("hidden");
+			}
+
+			function showDefaultSections() {
+				const sections = document.getElementsByTagName("section");
+				for(let i = 0; i < sections.length; i++) {
+					sections[i].classList.remove("hidden");
+				}
+				document.getElementById("home").classList.remove("hidden");
+				document.getElementById("impressum").classList.add("hidden");
+				document.getElementById("datenschutzerklaerung").classList.add("hidden");
+			}
+    	</script>
 	</body>
 </html>

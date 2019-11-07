@@ -4,3 +4,25 @@
 	background-size: cover;
 }
 
+@keyframes arrows {
+	0% {
+		border-left:$size/4 solid rgba(0,0,0,0);
+		border-bottom:$size/4 solid rgba(0,0,0,0);
+		transform:translate($size/-6,$size*4/-6)rotate(-45deg) ;
+	}
+	10%, 90% {
+		border-left:$size/4 solid rgba(0,0,0,0);
+		border-bottom:$size/4 solid rgba(0,0,0,0);
+	}
+	50% {
+		border-left:$size/4 solid rgba(0,0,0,$peakopacity);
+		border-bottom:$size/4 solid rgba(0,0,0,$peakopacity);
+		transform:translate($size/-6,0px)rotate(-45deg) ;
+	}
+	100% {
+		border-left:$size/4 solid rgba(0,0,0,0);
+		border-bottom:$size/4 solid rgba(0,0,0,0);
+		transform:translate($size/-6,$size*4/6)rotate(-45deg) ;
+	}
+}
+

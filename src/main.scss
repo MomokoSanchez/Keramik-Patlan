@@ -3,30 +3,45 @@
 @import "variables";
 @import "mixins";
 
-body {
+html {
+  scroll-behavior: smooth; // placeholder. Not supported in edge, safari, some mobile browser, see https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section1
+}
+
+body { 
 	nav {
 		background-color: $main-nav;
 		position: fixed;
 		width: $nav-width;
 		height: 100%;
 		font-family: 'Open Sans Condensed', sans-serif;
+		.navImg {
+			width: calc(100% - 20px);
+    		padding: 10px;
+		}
 
 		.nav-elements {
 			position: absolute;
 			right: 0;
 			top: 50%;
     		transform: translateY(-30%);
-			width: $golden-ratio-large;
+			width: $golden-ratio-small;
 			cursor: pointer;
 			font-size: 26px;
 			a {
 				display: block;
 				margin: 20px 0;
+				text-decoration: none;
+				color: black;
 			}
 			a:hover{
 				text-decoration: underline;
 			}
 		}
+	}
+	.navShadow {
+		position: fixed;
+		width: $nav-width;
+		height: 100%;
 	}
 
 	.main {
@@ -34,62 +49,179 @@ body {
 		line-height: 1.4;
 		float: right;
 		width: calc(100% - #{$nav-width}); // check % vs vw
-		// background-color: purple; // for testing
-		.title {
-			height: 80vh;
+		#home {
+			height: 90vh; // add variable
 			.titleImg {
 				position: fixed;
 				width: 100%;
-				height: 80vh;
+				height: 90vh;  // add variable
 				@include fullBgImg('../img/title.jpg');
 				z-index: -1;
 			}
 			.logoContainer {
 				position: absolute;
-				@include fullBgImg('../img/logo.jpg');
+				@include fullBgImg('../img/logo.png');
 				height: 100px;
 	    		width: 550px;
+				margin-top: calc(80vh - 150px);
+				margin-left: 25px;
+			}
+			.logoBackground {
+				position: absolute;
+				background: rgba(255, 250, 235, 0.5); // create var?
+				height: 100px;
+	    		width: 575px;
 				margin-top: calc(80vh - 150px);
 			}
 		}
 		.content {
 			width: 100%;
-			// background-color: green; // for testing
-			.info {
-				// background-color: blue;
+			// todo: create mixin
+			-webkit-box-shadow: inset 1px 1px 5px 0px $main-yellow;
+			-moz-box-shadow: inset 1px 1px 5px 0px $main-yellow;
+			box-shadow: inset 1px 1px 5px 0px $main-yellow;
+			background-color: white;
+			#info {
+			  	.arrows {
+			  		// https://codepen.io/z-/pen/BoyXKr
+					position: absolute;
+					width:$size;
+					height:$size;
+					transform:translate(-50%,-50%);
+					margin-left: calc(35% - 10px);
+    				margin-top: -60px;
+					&:before {
+						content: '';
+						position: absolute;
+						width:100%;
+						height:100%;
+						border-left:$size/3 solid $main-yellow;
+						border-bottom:$size/3 solid $main-yellow;
+						transform:translate($size/3,$size*4/3)rotate(-45deg);
+						animation: arrows $speed linear infinite;
+				    }
+				    &:after {
+						content: '';
+						position: absolute;
+						width:100%;
+						height:100%;
+						border-left:$size/3 solid $main-yellow;
+						border-bottom:$size/3 solid $main-yellow;
+						transform:translate($size*2/3,0px)rotate(-45deg) ;
+						animation: arrows $speed linear infinite $speed/-2;
+				    }
+				 }
+				 p {
+				 	width: 75%;
+					.infoTextImg {
+						width: 350px;
+					    float: right;
+					    margin-top: 20px;
+					}
+				 }
 			}
-			.galerie {
-				// background-color: magenta;
+			#galerie {
+				.imgBlock {
+					display: inline-block;
+
+					.landscape {
+					    width: calc( 53% - #{$default-margin} );
+					    height: auto;
+					    float: left;
+					    margin: 0 $default-margin $default-margin 0;
+					}
+					.portrait {
+						width: 46%;
+					}
+
+					&.blockA {
+						margin-top: $default-margin;
+						.landscape {
+						    float: left;
+						    margin: 0 $default-margin $default-margin 0;
+						}
+					}
+					&.blockB {
+						.landscape {
+						    margin: 0 0 $default-margin 0;
+						}
+
+						.portrait {
+							float: left;
+						    margin: 0 $default-margin $default-margin 0;
+						}
+					}
+				}
 			}
-			.termine {
+			#termine {
 				.termineImg {
     				position: absolute;
 					width: 250px;
-    				height: 260px;
+    				height: 390px;
 					@include fullBgImg('../img/terminePlaceholder.jpg');
 				}
 				.tableContainer {
-					margin-left: 300px;
+					margin-left: 300px; // create var
+					table {
+						border-collapse: collapse;
+						tr {
+							height: 30px;
+							&.lastMarket {
+								border-bottom: 3px solid $main-yellow;
+							}
+							&.isHappening {
+								border: 3px solid $main-yellow;
+							}
+							td:nth-child(odd) {
+								width: 125px;
+								padding-left: 5px;
+							}
+							td:nth-child(even) a {
+								color: black;
+								font-family: 'Open Sans semi-bold', sans-serif;		
+								text-decoration: none;
+								&:hover {
+									text-decoration: underline;
+								}
+							}
+						}
+					}
 				}
 			}
-			.kontakt {
+			#kontakt {
 				.blockContent {
-					height: 260px;
+					height: 285px;
+					.kontaktImg {
+						width: 250px;
+	    				height: 100%;
+	    				float: left;
+						@include fullBgImg('../img/kontaktPlaceholder2.jpg');
+					}
+					.kontaktText {
+						width: 50%;
+						padding: 0;
+						margin-left: 300px;
+						.kontaktTextImg {
+							width: 100%;
+						}
+					}
 				}
-				.kontaktImg {
-					width: 250px;
-    				height: 100%;
-    				float: left;
-					@include fullBgImg('../img/kontaktPlaceholder.jpg');
-				}
-				.kontaktText {
-					padding: 0;
-					margin-left: 300px;
+				.map {
+					height: 400px;
 				}
 			}
-			.footer {
+			#footer {
 				padding: 0;
 				text-align: center;
+				span:hover {
+					cursor: pointer;
+					font-weight: bold;
+					text-decoration: underline;
+				}
+				a {
+					text-decoration: none;
+					color: black;
+				}
 			}
 		}
 	}
