@@ -1,12 +1,36 @@
 @import "variables";
 @import "mixins";
 
+// for lazy-loading
+img {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+img[data-src] {
+	opacity: 0;
+}
+
 .default-margin {
 	margin: $default-margin;
 }
 
 .block {
 	padding: 2*$default-margin $default-margin 0 $default-margin;
+	.header {
+		&::after {
+			background: $main-yellow;
+		    content: "";
+		    display: block;
+		    width: 150px;
+		    height: 10px;
+		    margin-top: 15px;
+		}
+		.headerImg {
+			height: 50px;
+			position: absolute;
+		}
+	}
 	.blockContent {
 		position: relative;
 		padding: $default-margin 0;
@@ -14,23 +38,7 @@
 }
 
 .shadow {
-	-webkit-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
-	-moz-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
-	box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
-}
-
-.header {
-	&::after {
-		background: $main-yellow;
-	    content: "";
-	    display: block;
-	    width: 150px;
-	    height: 10px;
-	    margin-top: 15px;
-	}
-	.headerImg {
-		height: 50px;
-	}
+	@include box-shadow(1px 1px 5px 0px rgba(194,194,194,1));
 }
 
 p {
@@ -40,4 +48,14 @@ p {
 
 .hidden {
 	display: none;
+}
+
+.fadeOut {
+	opacity: 0 !important; // I'm not prod of this
+	@include transition(opacity 0.5s ease-in-out);
+}
+
+.fadeIn {
+	opacity: 1 !important; // I'm not prod of this
+	@include transition(opacity 0.5s ease-in-out);
 }

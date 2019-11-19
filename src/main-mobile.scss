@@ -1,0 +1,149 @@
+// responsive values
+
+@media (max-width: #{$mq-small}) {
+	body {
+		nav {    
+			width: 100%;
+    		height: 80px;
+    		max-height: 80px;
+    		top: 0;
+    		z-index: 2;
+    		@include transition(.8s ease-in-out);
+    		#navLogo {
+    			width: calc(100% - 100px); // - hamburger size
+    			max-width: 300px;
+    		}
+    		// open
+			.navElements {
+				display: none;
+				opacity: 0;
+    			@include transition(opacity .8s ease-in-out);
+			}
+    		&.open {
+    			height: initial;
+    			max-height: 1000px;
+    			@include transition(.8s ease-in-out);
+	    		.navElements {
+	    			display: block;
+	    			position: relative;
+				    transform: none;
+				    width: 100%;
+				    top: 0;
+				    text-align: center;
+				    opacity: 1;
+    				@include transition(opacity.8s ease-in-out);
+	    		}   			
+    		}
+    		// https://codepen.io/designcouch/pen/Atyop
+    		#hamburger {
+    			display: block;
+				position: relative;
+				float: right;
+				width: 50px;
+				height: 40px;
+				margin: 20px 20px 0 0;
+				@include transform(rotate(0deg));
+				@include transition(.5s ease-in-out);
+				span {
+					display: block;
+					position: absolute;
+					height: 3px;
+					width: 100%;
+					background: #000000;
+					border-radius: 9px;
+					opacity: 1;
+					left: 0;
+					@include transform(rotate(0deg));
+					@include transition(.25s ease-in-out);
+
+					&:nth-child(1) {
+						top: 0px;
+					}
+
+					&:nth-child(2), &:nth-child(3) {
+						top: 18px;
+					}
+
+					&:nth-child(4) {
+						top: 36px;
+					}
+				}
+				&.open span {
+					&:nth-child(1) {
+						top: 18px;
+						width: 0%;
+						left: 50%;
+					}
+
+					&:nth-child(2) {
+						@include transform(rotate(45deg));
+					}
+
+					&:nth-child(3) {
+						@include transform(rotate(-45deg));
+					}
+
+					&:nth-child(4) {
+						top: 18px;
+						width: 0%;
+						left: 50%;
+					}
+				}
+    		}
+		}
+		.main {
+			width: 100%;
+			#home {
+				.titleImg, .logoBackground, .logoContainer {
+					width: 100%;
+					margin-left: 0;
+				}
+				.logoContainer, .logoBackground {
+					margin-top: calc(90vh - 100px);
+				}
+				.logoContainer {
+					-webkit-background-size: contain;
+				    -moz-background-size: contain;
+				    -o-background-size: contain;
+				    background-size: contain;
+				}
+			}
+			.content {
+				position: inherit;
+				box-shadow: none;
+				#info p {
+					width: 100%;
+				}
+				#termine {
+					.termineImg {
+						display: none;
+					}
+					.tableContainer {
+						margin-left: 0;
+					}
+				}
+				#kontakt {
+					.blockContent {
+						height: auto;
+						.kontaktImg {
+							width: 100%;
+							height: 200px;
+							margin-bottom: $default-margin;
+						}
+						.kontaktText {
+							margin-left: 0;
+							width: 100%;
+							.kontaktUnterschrift {
+								width: 100%;
+								left: 0;
+							}
+						}
+					}
+					.map {
+						margin-top: 60px;
+					}
+				}
+			}
+		}
+	}	
+}

@@ -7,14 +7,23 @@ $nav-width: 20%;
 
 // colors
 $main-yellow: #FFEEB5;
-$main-nav: #7D95AC;
+$main-blue: #7D95AC;
+$main-nav: linear-gradient(to right top, #445a7b, #566f90, #6b87a7, #7a98b7, #93acc3);
 
 
 // margins
 $default-margin: 40px;
+$default-margin-half: $default-margin * 0.5;
 
 
 // for arrow
 $size: 20px;
 $speed: 3s;
 $peakopacity:0.7;
+
+// media queries
+// like https://getbootstrap.com/docs/4.0/layout/grid/
+$mq-xsmall: 576px;
+$mq-small: 768px;
+$mq-medium: 992px;
+$mq-large: 1200px;

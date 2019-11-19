@@ -4,7 +4,6 @@
   "description": "Homepage for small pottery business",
   "main": "index.html",
   "dependencies": {
-    "scrollmagic": "^2.0.7",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {},

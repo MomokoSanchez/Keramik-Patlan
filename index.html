@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html  lang="de">
 	<head>
+    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- open graph data -->
+	    <meta property="og:url" content="http://www.keramik-patlan.de" />
+	    <meta property="og:title" content="Keramikwerkstatt Patlan" />
+	    <meta property="og:description" content="Handgemachte Keramik für den täglichen Gebrauch" />
+	    <meta property="og:image" content="http://www.keramik-patlan.de/keramik-patlan/img/gallery/tasse-teller.jpg" />
+
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300, 600" rel="stylesheet">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+    	<title>Keramik-Patlan</title>
 	</head>
 	<body>
 		<nav>
-			<img class="navImg" src='./img/logo.png'></img>
-			<div class="nav-elements">
-				<a onclick="showDefaultSections()" href="#home">Home</a>
-				<a onclick="showDefaultSections()" href="#info">About</a>
-				<a onclick="showDefaultSections()" href="#galerie">Galerie</a>
-				<a onclick="showDefaultSections()" href="#termine">Termine</a>
-				<a onclick="showDefaultSections()" href="#kontakt">Kontakt</a>
+			<a  href="#home"><img id="navLogo" alt="keramik-patlan logo" src='./img/logo.png'></a>
+			<div id="hamburger" onclick="toggleHamburger()">
+			  	<span></span>
+			  	<span></span>
+			  	<span></span>
+			  	<span></span>
+			</div>
+			<div class="navElements">
+				<a onclick="showDefaultSections()" href="#home" id="toHome" class="showMarker">Home</a>
+				<a onclick="showDefaultSections()" href="#info" id="toInfo">About</a>
+				<a onclick="showDefaultSections()" href="#galerie" id="toGalerie">Galerie</a>
+				<a onclick="showDefaultSections()" href="#termine" id="toTermine">Termine</a>
+				<a onclick="showDefaultSections()" href="#kontakt" id="toKontakt">Kontakt</a>
 			</div>
 		</nav>
 		<div class="main">
@@ -24,33 +42,70 @@
 			</header>
 			<div class="content">
 				<section class="block" id="info">
-					<div class="arrows"></div>
+					<div id="arrows"></div>
 					<div class="header">
-						<img class="headerImg" src='./img/about.png'></img>
+						<img class="headerImg" alt="" src='./img/about.jpg'>
+						<h2>Info</h2>
 					</div>
 					<p>
-						Seit 1984 stellen wir in unserer Werkstatt handgetöpferte Steinzeug-Keramik her. Wir fertigen Geschirr für den täglichen Gebrauch, Vasen als Einzelstücke und Pflanztöpfe für den Garten. Charakteristisch an unserer Arbeit sind die Glasuren Blau und Grün mit all ihren Nuancen, teils dekoriert mit floralen Motiven auf weißem Hintergrund. Auf der Drehscheibe gedreht, mit den Händen geformt, werden die Gefäße zu einem haptischen Erlebnis, denn man erahnt die Fingerspuren des Töpfers auf jedem Stück. So soll unsere Freude an der Arbeit in das Objekt übergehen und Freude am Gebrauch bringen.
-						<img class="infoTextImg" src='./img/ingrid_u_carlos_patlan.png'></img>
+						Seit 1984 stellen wir in unserer Werkstatt handget&ouml;pferte Steinzeug-Keramik her. Wir fertigen Geschirr f&uuml;r den t&auml;glichen Gebrauch, Vasen als Einzelst&uuml;cke und Pflanzt&ouml;pfe f&uuml;r den Garten. Charakteristisch an unserer Arbeit sind die Glasuren Blau und Gr&uuml;n mit all ihren Nuancen, teils dekoriert mit floralen Motiven auf wei&szlig;em Hintergrund. Auf der Drehscheibe gedreht, mit den H&auml;nden geformt, werden die Gef&auml;&szlig;e zu einem haptischen Erlebnis, denn man erahnt die Fingerspuren des T&ouml;pfers auf jedem St&uuml;ck. So soll unsere Freude an der Arbeit in das Objekt &uuml;bergehen und Freude am Gebrauch bringen.
+						<span class="infoTextUnterschrift">Ingrid u. Carlos Patlan</span>
+						<img class="infoTextUnterschrift" alt="" src='./img/ingrid_u_carlos_patlan.jpg'>
 					</p>
 				</section>
 				<section class="block" id="galerie">
 					<div class="header">
-						<img class="headerImg" src='./img/galerie.png'></img>
+						<img class="headerImg" alt="" src='./img/galerie.jpg'>
+						<h2>Galerie</h2>
 					</div>
-					<div class="imgBlock blockA">
-						<img class="image landscape shadow left" src="img/gallery/auflaufformen_gruen.jpg"/>
-						<img class="image landscape shadow left" src="img/gallery/brottopf.jpg"/>
-						<img class="image portrait shadow right" src="img/gallery/krug2.jpg"/>
+					<div class="imgContainer">
+						<div class="imgBlock landscapeBlock">
+							<div class="topImg">
+								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
+								<img class="hoverImg shadow" alt="Auflaufform" onclick="showGallery()" data-src="img/gallery/auflaufformen_gruen.jpg"/>
+							</div>
+							<div class="bottomImg">
+								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
+								<img class="hoverImg shadow" alt="brottopf" onclick="showGallery()" data-src="img/gallery/brottopf.jpg"/>	
+							</div>
+						</div>
+						<div class="imgBlock portraitBlock">
+							<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/portrait-placeholder.jpg"/>
+							<img class="hoverImg shadow" alt="Krug" onclick="showGallery()" data-src="img/gallery/krug2.jpg"/>
+						</div>
+						<div class="imgBlock portraitBlock">
+							<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/portrait-placeholder.jpg"/>
+							<img class="hoverImg shadow" alt="Krug" onclick="showGallery()" data-src="img/gallery/krug.jpg"/>
+						</div>
+						<div class="imgBlock landscapeBlock">
+							<div class="topImg">
+								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
+								<img class="hoverImg shadow" alt="Tasse und Teller" onclick="showGallery()" data-src="img/gallery/tasse-teller.jpg"/>
+							</div>
+							<div class="bottomImg">
+								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
+								<img class="hoverImg shadow" alt="Quicheformen" onclick="showGallery()" data-src="img/gallery/auflaufformen_gruen.jpg"/>
+							</div>
+						</div>
 					</div>
-					<div class="imgBlock blockB">
-						<img class="image portrait shadow right" src="img/gallery/krug.jpg"/>
-						<img class="image landscape shadow left" src="img/gallery/tasse-teller.jpg"/>
-						<img class="image landscape shadow left" src="img/gallery/auflaufformen_gruen.jpg"/>
+				</section>
+				<section class="block hidden" id="galerieLarge">
+			        <div class="close" onclick="showDefaultSections()">
+			          <div class="closeLeft">
+			            <div class="closeRight">
+			            </div>
+			          </div>
+			        </div>
+					<div class="galleryLargeContainer">
+						<a href="#" class="arrow left"></a>
+						<img class="shadow landscapeImg" alt="Auflaufform" data-src="img/gallery/auflaufformen_gruen.jpg"/>	
+						<a href="#" class="arrow right"></a>
 					</div>
 				</section>
 				<section class="block" id="termine">
 					<div class="header">
-						<img class="headerImg" src='./img/termine.png'></img>
+						<img class="headerImg" alt="" src='./img/termine.jpg'>
+						<h2>Termine</h2>
 					</div>
 					<div class="blockContent">
 						<div class="termineImg shadow"></div>
@@ -58,19 +113,19 @@
 							<table id="termineTable">
 								<tr data-from="525" data-to="526">
 									<td>25. - 26.05.</td>
-									<td><a href="https://lalling.de/leben-in-lalling/lallinger-toepfermarkt/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Lalling, Nby.<a/></td>
+									<td><a href="https://lalling.de/leben-in-lalling/lallinger-toepfermarkt/" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Lalling, Nby.</a></td>
 								</tr>		
 								<tr data-from="530" data-to="602">
 									<td>30.05 - 02.06.</td>
-									<td><a href="https://www.diessen.de/kunst-kultur/diessener-toepfermarkt/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Diessen a. Ammersee</a></td>
+									<td><a href="https://www.diessen.de/kunst-kultur/diessener-toepfermarkt/" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Diessen a. Ammersee</a></td>
 								</tr>			
 								<tr data-from="615" data-to="616">
 									<td>15. - 16.06.</td>
-									<td><a href="http://www.darmsheimer-töpfermarkt.de/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Darmsheim, Ba.-Wü.</a></td>
+									<td><a href="https://www.darmsheimer-töpfermarkt.de" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Darmsheim, Ba.-W&uuml;.</a></td>
 								</tr>				
 								<tr data-from="2206" data-to="2306">
 									<td>22. - 23.06.</td>
-									<td><a href="https://www.wintonet.de/tm/">T&oumlpfermarkt in Frontenhausen, Nby.</a></td>
+									<td><a href="https://www.wintonet.de/tm/" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Frontenhausen, Nby.</a></td>
 								</tr>
 								<!--<tr data-from="2505" data-to="2605" target='_blank' rel="noopener noreferrer">
 									<td>29. - 30.06.</td>
@@ -86,28 +141,28 @@
 								</tr>
 								<tr data-from="810" data-to="811">
 									<td>10. - 11.08.</td>
-									<td><a href="http://www.fuerstenfeld.de//index.php?page_id=48" target='_blank' rel="noopener noreferrer">Töpfer- und Kunsthandwerkermarkt in Fürstenfeldbruck</a></td>
+									<td><a href="http://www.fuerstenfeld.de//index.php?page_id=48" target='_blank' rel="noopener noreferrer">T&ouml;pfer- und Kunsthandwerkermarkt in F&uuml;rstenfeldbruck</a></td>
 								</tr>
 								<tr data-from="824" data-to="825">
 									<td>24. - 25.08.</td>
-									<td><a href="http://www.murnau.de/de/toepfermarkt.html" target='_blank' rel="noopener noreferrer">Murnauer T&oumlpfermarkt</a></td>
+									<td><a href="http://www.murnau.de/de/toepfermarkt.html" target='_blank' rel="noopener noreferrer">Murnauer T&ouml;pfermarkt</a></td>
 								</tr>
 								<!--<tr>
 									<td>01. - 02.09.</td>
-									<td><a href="https://nu.neu-ulm.de/de/neu-ulm-erleben/veranstaltungen/feste-maerkte/toepfermarkt/" target='_blank' rel="noopener noreferrer">Neu-Ulmer Töpfermarkt</a></td>
+									<td><a href="https://nu.neu-ulm.de/de/neu-ulm-erleben/veranstaltungen/feste-maerkte/toepfermarkt/" target='_blank' rel="noopener noreferrer">Neu-Ulmer T&ouml;pfermarkt</a></td>
 								</tr>
 								-->
 								<tr data-from="907" data-to="908">
 									<td>07. - 08.09.</td>
-									<td><a href="http://www.kunstundhandwerk.info/toepfermarkt-passau/" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Passau<a/></td>
+									<td><a href="http://www.kunstundhandwerk.info/toepfermarkt-passau/" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Passau</a></td>
 								</tr>
 								<tr data-from="914" data-to="915">
 									<td>14. - 15.09.</td>
-									<td><a href="http://www.neuburger-toepfermarkt.de" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Neuburg a. d. Donau </a></td>
+									<td><a href="http://www.neuburger-toepfermarkt.de" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Neuburg a. d. Donau</a></td>
 								</tr>
 								<tr data-from="1012" data-to="1013">
 									<td>12. - 13.10.</td>
-									<td><a href="http://www.vaterstetten.de/city_info/webaccessibility/index.cfm?region_id=276&waid=520&item_id=864207&link_id=213781419&fsize=1&contrast=0" target='_blank' rel="noopener noreferrer">T&oumlpfermarkt in Vaterstetten bei M&uumlnchen</a></td>
+									<td><a href="http://www.vaterstetten.de/city_info/webaccessibility/index.cfm?region_id=276&waid=520&item_id=864207&link_id=213781419&fsize=1&contrast=0" target='_blank' rel="noopener noreferrer">T&ouml;pfermarkt in Vaterstetten bei M&uuml;nchen</a></td>
 								</tr>	
 								<!--
 								<tr data-from="25-05" data-to="26-05">
@@ -117,7 +172,7 @@
 								-->
 								<tr  data-from="1129" data-to="1224">
 									<td>29.11. - 24.12.</td>
-									<td><a href="http://www.schwabingerweihnachtsmarkt.de/" target='_blank' rel="noopener noreferrer">Schwabinger Weihnachtsmarkt in M&uumlnchen </a></td>
+									<td><a href="http://www.schwabingerweihnachtsmarkt.de/" target='_blank' rel="noopener noreferrer">Schwabinger Weihnachtsmarkt in M&uuml;nchen </a></td>
 								</tr>
 							</table>
 						</div>
@@ -125,22 +180,24 @@
 				</section>
 				<section class="block" id="kontakt">
 					<div class="header">
-						<img class="headerImg" src='./img/kontakt.png'></img>
+						<img class="headerImg" alt="" src='./img/kontakt.jpg'>
+						<h2>Kontakt</h2>
 					</div>
 					<div class="blockContent">
 						<div class="kontaktImg shadow"></div>
 						<p class="kontaktText">
-							Ingrid & Carlos Patlán<br/>
+							Ingrid & Carlos Patl&aacute;n<br/>
 							Damianstr. 25<br/>
 							94557 Niederalteich<br/>
 							keramik-patlan[at]web.de<br/>
 							<br/>
 							09901 - 90 38 40<br/>
 							<br/>
-							Besuchen Sie unser gerne in unserer Keramikwerkstatt oder auf einem der Töpfermärkte.
+							Besuchen Sie unser gerne in unserer Keramikwerkstatt oder auf einem der T&ouml;pferm&auml;rkte.
 							<br/>
-							Wir haben keine geregelten Öffnungszeiten, sind aber unter der Woche normalerweise den ganzen Tag zu erreichen.
-							<img class="kontaktTextImg" src='./img/wir_freuen_uns_auf_ihren_besuch.png'></img>
+							Wir haben keine geregelten &Ouml;ffnungszeiten, sind aber unter der Woche normalerweise den ganzen Tag zu erreichen.
+							<span class="kontaktUnterschrift">Wir freuen uns auf Ihren Besuch!</span>
+							<img class="kontaktUnterschrift" alt="" src='./img/wir_freuen_uns_auf_ihren_besuch.jpg'>
 						</p>
 					</div>
 					<div class="map">
@@ -200,11 +257,11 @@
 								<li>Daten&uuml;bertragbarkeit, sofern Sie in die Datenverarbeitung eingewilligt haben oder einen Vertrag mit uns abgeschlossen haben.</li>
 							</ul>
 							Sofern Sie uns eine Einwilligung erteilt haben, k&ouml;nnen Sie diese jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.
-							Sie k&ouml;nnen sich jederzeit mit einer Beschwerde an die f&uuml;r Sie zust&auml;ndige Aufsichtsbeh&ouml;rde wenden. Ihre zust&auml;ndige Aufsichtsbeh&ouml;rde richtet sich nach dem Bundesland Ihres Wohnsitzes, Ihrer Arbeit oder der mutmaĂźlichen Verletzung. Eine Liste der Aufsichtsbeh&ouml;rden (f&uuml;r den nicht&ouml;ffentlichen Bereich) mit Anschrift finden Sie unter: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.
+							Sie k&ouml;nnen sich jederzeit mit einer Beschwerde an die f&uuml;r Sie zust&auml;ndige Aufsichtsbeh&ouml;rde wenden. Ihre zust&auml;ndige Aufsichtsbeh&ouml;rde richtet sich nach dem Bundesland Ihres Wohnsitzes, Ihrer Arbeit oder der mutma&szlig;lichen Verletzung. Eine Liste der Aufsichtsbeh&ouml;rden (f&uuml;r den nicht&ouml;ffentlichen Bereich) mit Anschrift finden Sie unter: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.
 						</p> 
 						<h3>Kontakt</h3>
 						<p> 
-							Treten Sie bzgl. Fragen jeglicher Art per E-Mail mit uns in Kontakt, erteilen Sie uns zum Zwecke der Kontaktaufnahme Ihre freiwillige Einwilligung. Hierf&uuml;r ist die Angabe einer validen E-Mail-Adresse erforderlich. Diese dient der Zuordnung der Anfrage und der anschlieĂźenden Beantwortung derselben. Die Angabe weiterer Daten ist optional. Die von Ihnen gemachten Angaben werden zum Zwecke der Bearbeitung der Anfrage sowie f&uuml;r m&ouml;gliche Anschlussfragen gespeichert. Nach Erledigung der von Ihnen gestellten Anfrage werden personenbezogene Daten automatisch gel&ouml;scht.
+							Treten Sie bzgl. Fragen jeglicher Art per E-Mail mit uns in Kontakt, erteilen Sie uns zum Zwecke der Kontaktaufnahme Ihre freiwillige Einwilligung. Hierf&uuml;r ist die Angabe einer validen E-Mail-Adresse erforderlich. Diese dient der Zuordnung der Anfrage und der anschlie&szlig;enden Beantwortung derselben. Die Angabe weiterer Daten ist optional. Die von Ihnen gemachten Angaben werden zum Zwecke der Bearbeitung der Anfrage sowie f&uuml;r m&ouml;gliche Anschlussfragen gespeichert. Nach Erledigung der von Ihnen gestellten Anfrage werden personenbezogene Daten automatisch gel&ouml;scht.
 						</p> 
 						<h3>Zwecke der Datenverarbeitung durch die verantwortliche Stelle und Dritte</h3>
 						<p> 
@@ -224,7 +281,7 @@
                         </p> 
                         <h3>Erfassung allgemeiner Informationen beim Besuch unserer Website</h3> 
                         <p> 
-							Bei jedem Webseitenabruf werden Daten erfasst, die in den Logfiles des Servers und der Webanwendung gespeichert werden. Diese Informationen beinhalten etwa die Art des Webbrowsers, das verwendete Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und &auml;hnliches. Hierbei handelt es sich ausschlieĂźlich um Informationen, welche keine R&uuml;ckschl&uuml;sse auf Ihre Person zulassen.<br/>
+							Bei jedem Webseitenabruf werden Daten erfasst, die in den Logfiles des Servers und der Webanwendung gespeichert werden. Diese Informationen beinhalten etwa die Art des Webbrowsers, das verwendete Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und &auml;hnliches. Hierbei handelt es sich ausschlie&szlig;lich um Informationen, welche keine R&uuml;ckschl&uuml;sse auf Ihre Person zulassen.<br/>
 							Diese Informationen sind technisch notwendig, um von Ihnen angeforderte Inhalte von Webseiten korrekt auszuliefern und fallen bei Nutzung des Internets zwingend an. Sie werden insbesondere zu folgenden Zwecken verarbeitet:
 							<ul>
 								<li>Sicherstellung eines problemlosen Verbindungsaufbaus der Website,</li>
@@ -235,21 +292,15 @@
 							Die Verarbeitung Ihrer personenbezogenen Daten basiert auf unserem berechtigten Interesse aus den vorgenannten Zwecken zur Datenerhebung. Wir verwenden Ihre Daten nicht, um R&uuml;ckschl&uuml;sse auf Ihre Person zu ziehen. Empf&auml;nger der Daten sind nur die verantwortliche Stelle und ggf. Auftragsverarbeiter.<br/>
 							Anonyme Informationen dieser Art werden von uns ggfs. statistisch ausgewertet, um unseren Internetauftritt und die dahinterstehende Technik zu optimieren.
                         </p> 
-                        <h3>Datenverarbeitung durch JavaScript-Bibliotheken</h3> 
-                        <p> 
-							Diese Webseite verwendet JavaScript-Bibliotheken externer Anbieter. Durch den Einsatz der JavaScript-Bibliotheken wird die Nutzbarkeit einzelner Funktionalit&auml;ten dieser Webseite &uuml;berhaupt erst erm&ouml;glicht, was wiederum dem Nutzer die Nutzung dieser Webseite erleichtert. Diese Webseite verwendet JavaScript-Code des Unternehmens LLC. NetDNA, 3575, Cahuenga Blvd Suite 630, Los Angeles, CA 90068, USA (BootstrapCDN), ferner jQuery, bereitgestellt durch den Drittanbieter jQuery Foundation. 
-							Es ist nicht auszuschlieĂźen, dass durch den Aufruf der Webseite personenbezogene Daten an die externen Anbieter &uuml;bertragen werden. Die Datenverarbeitung erfolgt auf der Grundlage berechtigter Interessen i.S. des Art. 6 Abs. 1 S. 1 f.) DSGVO. Nutzer k&ouml;nnen die &Uuml;bertragung verhindern, indem sie einen JavaScript-Blocker wie z.B. das Browser-Plugin "NoScript" (<a href="https://noscript.net/">https://noscript.net/</a>) installieren oder JavaScript durch Browsereinstellungen deaktivieren. Der Betreiber weist darauf hin, dass diese Option eine Nutzbarkeit der Webseite einschr&auml;nken kann. Weitere Informationen finden Nutzer unter <a href="https://www.bootstrapcdn.com/privacy-policy/">https://www.bootstrapcdn.com/privacy-policy/</a> bzw. <a href="https://jquery.org">https://jquery.org</a>.
-                        </p> 
-
                         <h3>Verwendung von Google Analytics</h3> 
                         <p> 
-							Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (folgend: Google). Google Analytics verwendet sog. â€žCookiesâ€ś, also Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Webseite durch Sie erm&ouml;glichen. Die durch das Cookie erzeugten Informationen &uuml;ber Ihre Benutzung dieser Webseite werden in der Regel an einen Server von Google in den USA &uuml;bertragen und dort gespeichert. Aufgrund der Aktivierung der IP-Anonymisierung auf diesen Webseiten, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europ&auml;ischen Union oder in anderen Vertragsstaaten des Abkommens &uuml;ber den Europ&auml;ischen Wirtschaftsraum zuvor gek&uuml;rzt. Nur in Ausnahmef&auml;llen wird die volle IP-Adresse an einen Server von Google in den USA &uuml;bertragen und dort gek&uuml;rzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Webseite auszuwerten, um Reports &uuml;ber die Webseitenaktivit&auml;ten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegen&uuml;ber dem Webseitenbetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser &uuml;bermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengef&uuml;hrt.<br/>
+							Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (folgend: Google). Google Analytics verwendet sog. Cookies, also Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Webseite durch Sie erm&ouml;glichen. Die durch das Cookie erzeugten Informationen &uuml;ber Ihre Benutzung dieser Webseite werden in der Regel an einen Server von Google in den USA &uuml;bertragen und dort gespeichert. Aufgrund der Aktivierung der IP-Anonymisierung auf diesen Webseiten, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europ&auml;ischen Union oder in anderen Vertragsstaaten des Abkommens &uuml;ber den Europ&auml;ischen Wirtschaftsraum zuvor gek&uuml;rzt. Nur in Ausnahmef&auml;llen wird die volle IP-Adresse an einen Server von Google in den USA &uuml;bertragen und dort gek&uuml;rzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Webseite auszuwerten, um Reports &uuml;ber die Webseitenaktivit&auml;ten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegen&uuml;ber dem Webseitenbetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser &uuml;bermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengef&uuml;hrt.<br/>
 							Die Zwecke der Datenverarbeitung liegen in der Auswertung der Nutzung der Website und in der Zusammenstellung von Reports &uuml;ber Aktivit&auml;ten auf der Website. Auf Grundlage der Nutzung der Website und des Internets sollen dann weitere verbundene Dienstleistungen erbracht werden. Die Verarbeitung beruht auf dem berechtigten Interesse des Webseitenbetreibers.
 							Sie k&ouml;nnen die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht s&auml;mtliche Funktionen dieser Website vollumf&auml;nglich werden nutzen k&ouml;nnen. Sie k&ouml;nnen dar&uuml;ber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Webseite bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verf&uuml;gbare Browser-Plugin herunterladen und installieren: <a href="http://tools.google.com/dlpage/gaoptout?hl=de">Browser Add On zur Deaktivierung von Google Analytics</a>.<br/>
 							Zus&auml;tzlich oder als Alternative zum Browser-Add-On k&ouml;nnen Sie das Tracking durch Google Analytics auf unseren Seiten unterbinden, indem Sie <a href="https://www.activemind.de/datenschutz/datenschutzhinweis-generator/ergebnis/#">diesen Link</a> anklicken. Dabei wird ein Opt-Out-Cookie auf Ihrem Ger&auml;t installiert. Damit wird die Erfassung durch Google Analytics f&uuml;r diese Website und f&uuml;r diesen Browser zuk&uuml;nftig verhindert, so lange das Cookie in Ihrem Browser installiert bleibt.<br/>
 							Verwendung von Scriptbibliotheken (Google Webfonts)
 							Um unsere Inhalte browser&uuml;bergreifend korrekt und grafisch ansprechend darzustellen, verwenden wir auf dieser Website Scriptbibliotheken und Schriftbibliotheken wie z. B. Google Webfonts (<a href="http://www.google.com/webfonts/">https://www.google.com/webfonts/</a>). Google Webfonts werden zur Vermeidung mehrfachen Ladens in den Cache Ihres Browsers &uuml;bertragen. Falls der Browser die Google Webfonts nicht unterst&uuml;tzt oder den Zugriff unterbindet, werden Inhalte in einer Standardschrift angezeigt.
-							Der Aufruf von Scriptbibliotheken oder Schriftbibliotheken l&ouml;st automatisch eine Verbindung zum Betreiber der Bibliothek aus. Dabei ist es theoretisch m&ouml;glich â€“ aktuell allerdings auch unklar ob und ggf. zu welchen Zwecken â€“ dass Betreiber entsprechender Bibliotheken Daten erheben.
+							Der Aufruf von Scriptbibliotheken oder Schriftbibliotheken l&ouml;st automatisch eine Verbindung zum Betreiber der Bibliothek aus. Dabei ist es theoretisch m&ouml;glich (aktuell allerdings auch unklar ob und ggf. zu welchen Zwecken) dass Betreiber entsprechender Bibliotheken Daten erheben.
 							Die Datenschutzrichtlinie des Bibliothekbetreibers Google finden Sie hier: <a href="https://www.google.com/policies/privacy/">https://www.google.com/policies/privacy/</a>
                         </p> 
 						<p>Die Datenschutzerkl&auml;rung wurde u.a. mit dem <a href="https://www.activemind.de/datenschutz/datenschutzhinweis-generator/">Datenschutzerkl&auml;rungs-Generator der activeMind AG</a> erstellt.</p>
@@ -260,7 +311,25 @@
 			</div>
 		</div>
     	<script>
+    		let arrowClassChanged = false; // adding this for performance, not sure if best solution
+    		let headerClassChanged = false;
+    		let navHomeClassChanged = false;
+    		let navInfoClassChanged = false;
+    		let navTermineClassChanged = false;
+    		let navGalerieClassChanged = false;
+    		let navKontaktClassChanged = false;
+
     		(function() {
+    			
+    			//lazy loading of portfolio detail images, thanks https://davidwalsh.name/lazyload-image-fade
+			    [].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
+			        img.setAttribute('src', img.getAttribute('data-src'));
+			        img.onload = function() {
+			          	img.removeAttribute('data-src');
+			        };
+			    });
+
+    			// set date indicator
 				const today = new Date,
 					day = ("0" + today.getDate()).slice(-2),
 					currentMonthDay = (today.getMonth()+1)+""+day,
@@ -279,8 +348,87 @@
 							row.classList.add("lastMarket");
 						}
 					}
-			   } 
+			   }
+
+			   	// get scrollPosition
+				var browserHeight = window.innerHeight;
+
+				window.addEventListener('scroll', function(e) {
+			   		var scrollPosition = window.scrollY;
+			   		var secHeights = getSectionHeights();
+
+			   		// CTA arrow
+			   		if ((scrollPosition > (browserHeight * 0.1)) && !arrowClassChanged) {
+			   			fadeOutArrow();
+			   		}
+
+			   		// navLogo
+			   		if ((scrollPosition > (browserHeight * 0.25)) && !headerClassChanged) {
+			   			fadeInNavLogo();
+			   		} else if ((scrollPosition <= (browserHeight * 0.25)) && headerClassChanged){
+			   			fadeOutNavLogo();
+			   		}
+
+			   		// navMarker
+			   		if ((scrollPosition < secHeights.home) && !navHomeClassChanged) {
+			   			hideNavMarker();
+			   			document.querySelectorAll('#toHome')[0].classList.add("showMarker");
+			   			navHomeClassChanged = true;
+			   		} else if ((scrollPosition >= secHeights.home) && (scrollPosition <= secHeights.info) && !navInfoClassChanged) {
+			   			hideNavMarker();
+			   			document.querySelectorAll('#toInfo')[0].classList.add("showMarker");
+			   			navInfoClassChanged = true;
+			   		} else if ((scrollPosition >= secHeights.info) && (scrollPosition <= secHeights.galerie) && !navGalerieClassChanged) {
+			   			hideNavMarker();
+			   			document.querySelectorAll('#toGalerie')[0].classList.add("showMarker");
+			   			navGalerieClassChanged = true;
+			   		} else if ((scrollPosition >= secHeights.galerie) && (scrollPosition <= secHeights.termine) && !navTermineClassChanged) {
+			   			hideNavMarker();
+			   			document.querySelectorAll('#toTermine')[0].classList.add("showMarker");
+			   			navTermineClassChanged = true;
+			   		} else if ((scrollPosition >= secHeights.termine) && !navKontaktClassChanged) {
+			   			hideNavMarker();
+			   			document.querySelectorAll('#toKontakt')[0].classList.add("showMarker");
+			   			navKontaktClassChanged = true;
+			   		} 
+				});
 			})();
+
+			function hideNavMarker() {
+				const navItems = document.querySelectorAll('.navElements a');
+				for(item of navItems) {
+			   		item.classList.remove("showMarker");
+				}
+				navHomeClassChanged = false;
+				navInfoClassChanged = false;
+				navGalerieClassChanged = false;
+				navTermineClassChanged = false;
+				navKontaktClassChanged = false;
+			}
+
+    		function toggleHamburger() {
+    			const nav = document.getElementsByTagName('nav')[0];
+    			const hamburger = document.getElementById('hamburger');
+    			nav.classList.toggle('open');
+    			hamburger.classList.toggle('open');
+    		}
+
+			function getSectionHeights() {
+				// TODO: rerun on browser resize
+				const home = document.getElementById('home').scrollHeight;
+				const info = document.getElementById('info').scrollHeight + home;
+				const galerie = document.getElementById('galerie').scrollHeight + info;
+				const termine = document.getElementById('termine').scrollHeight + galerie;
+				// const kontakt = document.getElementById('kontakt').scrollHeight + termine;
+
+				return {
+					"home": home, 
+					"info": info,
+					"galerie": galerie,
+					"termine": termine,
+					"kontakt": kontakt
+				}
+			}
 
 			function showSection(section) {
 				const sections = document.getElementsByTagName("section");
@@ -299,7 +447,33 @@
 				document.getElementById("home").classList.remove("hidden");
 				document.getElementById("impressum").classList.add("hidden");
 				document.getElementById("datenschutzerklaerung").classList.add("hidden");
+				document.getElementById("galerieLarge").classList.add("hidden");
+			}
+
+			function fadeOutArrow() {
+				document.getElementById("arrows").classList.add("fadeOut");
+				arrowClassChanged = true;
+			}
+
+			function fadeInNavLogo() {
+				document.getElementById("navLogo").classList.remove("fadeOut");
+				document.getElementById("navLogo").classList.add("fadeIn");
+				headerClassChanged = true;
+			}
+
+			function fadeOutNavLogo() {
+				document.getElementById("navLogo").classList.remove("fadeIn");
+				document.getElementById("navLogo").classList.add("fadeOut");
+				headerClassChanged = false;
+			}
+
+			function showGallery() {
+				showSection("galerieLarge");
+				// todo: show specific image
 			}
     	</script>
+    <!-- custom JS 
+    <script src="src/js/script.js" async></script>
+    -->
 	</body>
 </html>

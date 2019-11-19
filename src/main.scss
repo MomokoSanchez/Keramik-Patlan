@@ -9,22 +9,27 @@ html {
 
 body { 
 	nav {
-		background-color: $main-nav;
+		background: $main-nav;
 		position: fixed;
 		width: $nav-width;
 		height: 100%;
 		font-family: 'Open Sans Condensed', sans-serif;
-		.navImg {
+		#navLogo {
 			width: calc(100% - 20px);
     		padding: 10px;
+    		opacity: 0;
+		}
+		#hamburger {
+			display: none;
 		}
 
-		.nav-elements {
+		.navElements {
 			position: absolute;
 			right: 0;
 			top: 50%;
     		transform: translateY(-30%);
 			width: $golden-ratio-small;
+			min-width: 120px;
 			cursor: pointer;
 			font-size: 26px;
 			a {
@@ -32,16 +37,17 @@ body {
 				margin: 20px 0;
 				text-decoration: none;
 				color: black;
-			}
-			a:hover{
-				text-decoration: underline;
+				&:hover{
+					text-decoration: underline;
+				}
+				&.showMarker::before {
+					content: '|'; // hot sure how well this works on all browsers
+					position: absolute;
+					margin-left: -15px;
+					margin-top: -3px;
+				}
 			}
 		}
-	}
-	.navShadow {
-		position: fixed;
-		width: $nav-width;
-		height: 100%;
 	}
 
 	.main {
@@ -63,7 +69,7 @@ body {
 				@include fullBgImg('../img/logo.png');
 				height: 100px;
 	    		width: 550px;
-				margin-top: calc(80vh - 150px);
+				margin-top: 18vh;
 				margin-left: 25px;
 			}
 			.logoBackground {
@@ -71,33 +77,34 @@ body {
 				background: rgba(255, 250, 235, 0.5); // create var?
 				height: 100px;
 	    		width: 575px;
-				margin-top: calc(80vh - 150px);
+				margin-top: 18vh;
 			}
 		}
 		.content {
 			width: 100%;
 			// todo: create mixin
-			-webkit-box-shadow: inset 1px 1px 5px 0px $main-yellow;
-			-moz-box-shadow: inset 1px 1px 5px 0px $main-yellow;
-			box-shadow: inset 1px 1px 5px 0px $main-yellow;
+			-webkit-box-shadow: inset 1px 1px 7px 0px #c3c3c3;
+			-moz-box-shadow: inset 1px 1px 7px 0px #c3c3c3;
+			box-shadow: inset 1px 1px 7px 0px #c3c3c3;
 			background-color: white;
 			#info {
-			  	.arrows {
+			  	#arrows {
 			  		// https://codepen.io/z-/pen/BoyXKr
 					position: absolute;
 					width:$size;
 					height:$size;
-					transform:translate(-50%,-50%);
+					@include transform(translate(-50%,-50%));
 					margin-left: calc(35% - 10px);
     				margin-top: -60px;
+    				opacity: 1; // visibility triggered onscroll
 					&:before {
 						content: '';
 						position: absolute;
-						width:100%;
-						height:100%;
+						width: 100%;
+						height: 100%;
 						border-left:$size/3 solid $main-yellow;
 						border-bottom:$size/3 solid $main-yellow;
-						transform:translate($size/3,$size*4/3)rotate(-45deg);
+						@include transform(translate($size/3,$size*4/3)rotate(-45deg));
 						animation: arrows $speed linear infinite;
 				    }
 				    &:after {
@@ -107,48 +114,150 @@ body {
 						height:100%;
 						border-left:$size/3 solid $main-yellow;
 						border-bottom:$size/3 solid $main-yellow;
-						transform:translate($size*2/3,0px)rotate(-45deg) ;
+						@include transform(translate($size*2/3,0px)rotate(-45deg));
 						animation: arrows $speed linear infinite $speed/-2;
 				    }
 				 }
 				 p {
 				 	width: 75%;
-					.infoTextImg {
+				 	.infoTextUnterschrift {
 						width: 350px;
-					    float: right;
-					    margin-top: 20px;
-					}
+				 		margin-top: 60px;
+					    position: absolute;
+					    right: 15%;
+				 	}
 				 }
 			}
 			#galerie {
-				.imgBlock {
-					display: inline-block;
-
-					.landscape {
-					    width: calc( 53% - #{$default-margin} );
-					    height: auto;
-					    float: left;
-					    margin: 0 $default-margin $default-margin 0;
-					}
-					.portrait {
-						width: 46%;
-					}
-
-					&.blockA {
-						margin-top: $default-margin;
-						.landscape {
-						    float: left;
-						    margin: 0 $default-margin $default-margin 0;
+				margin-bottom: 0;
+				.imgContainer {
+					width: calc(100% + #{$default-margin});
+					display: flex;
+					flex-wrap: wrap;
+					margin-bottom: $default-margin; // instead of parent to not hide hoverImg. Maybe better solution possible
+					.imgBlock {
+						position: relative;
+						&.landscapeBlock {
+							width: 51%;
+						}
+						&.portraitBlock {
+							width: 49%;
+						}
+						.topImg, .bottomImg {
+							position: relative;
+						}
+						img {
+							width: calc(100% - #{$default-margin});
+							margin-top: $default-margin;
+							&.placeholder {
+								position: relative;
+							}
+							&.hoverImg {
+								@include transition(all 0.5s);
+								transition-timing-function: ease-in;
+								position: absolute;
+								top: 0;
+								left: 0;
+								cursor: pointer;
+								&:hover {
+									width: 100%;
+									margin-top: $default-margin-half;
+									margin-left: -$default-margin-half;
+								}
+							}
 						}
 					}
-					&.blockB {
-						.landscape {
-						    margin: 0 0 $default-margin 0;
+				}
+			}
+			#galerieLarge {
+				position: fixed;
+				height: 100vh;
+				top: 0;
+				padding-top: 0;
+				background: white;
+				@include transition(background .05s ease-in);
+				box-shadow: inset 1px 1px 7px 0px #c3c3c3;
+				z-index: 2;
+				// TODO: fade in on show
+
+				.close {    
+			    	position: absolute;
+				    width: 50px;
+				    height: 50px;
+				    background-color: transparent;
+				    top: $default-margin-half;
+				    right: $default-margin;
+				    cursor: pointer;
+
+				    .closeLeft, .closeRight {
+			    		height: 50px;
+					    width: 2px;
+					    background-color: #636262;
+				    }
+
+			    	.closeLeft {
+					    margin-left: 35px;
+						@include transform( rotate(45deg) ); 
+						transition: all 200ms ease;
+
+			    		.closeRight {
+						    @include transform( rotate(90deg) ); 
+							transition: all 200ms ease;
+			    		}
+			    	}
+			    	&:hover {
+			    		.closeLeft, .closeRight {
+			    			width: 3px;
+			    			background-color: black;
+			    		}
+			    	}
+			    }
+				.galleryLargeContainer {
+					margin-top: 50vh;
+    				transform: translateY(-50%);
+					img {
+						margin: 0 $default-margin 0 $default-margin;
+						&.landscapeImg {
+							width: calc(100% - #{$default-margin}*2);
+						}
+						&.portraitImg {
+							height: 100%;
+						}
+					}
+					.arrow {
+						position: absolute;
+						top: 50%;
+						width: 30px;
+						height: 30px;
+						background: transparent;
+						border-top: 2px solid #636262;
+						border-right: 2px solid #636262;
+						box-shadow: 0 0 0 lightgray;
+						transition: all 200ms ease;
+						
+						&.left {
+							left: 0;
+							transform: translate3d(0,-50%,0) rotate(-135deg);
 						}
 
-						.portrait {
-							float: left;
-						    margin: 0 $default-margin $default-margin 0;
+						&.right {
+							right: 0;
+							transform: translate3d(0,-50%,0) rotate(45deg);
+						}
+						
+						&:hover {
+							border-top: 3px solid black;
+							border-right: 3px solid black;
+						}
+						
+						&:before { // for better hit area
+							content: '';
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-40%,-60%) rotate(45deg);
+							width: 200%;
+							height: 200%;
 						}
 					}
 				}
@@ -201,8 +310,11 @@ body {
 						width: 50%;
 						padding: 0;
 						margin-left: 300px;
-						.kontaktTextImg {
-							width: 100%;
+						.kontaktUnterschrift {
+							width: 350px;
+					 		margin-top: 40px;
+						    position: absolute;
+						    right: 15%;
 						}
 					}
 				}
@@ -226,3 +338,5 @@ body {
 		}
 	}
 }
+
+@import "main-mobile";
