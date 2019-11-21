@@ -58,34 +58,26 @@
 						<img class="headerImg" alt="" src='./img/galerie.jpg'>
 						<h2>Galerie</h2>
 					</div>
-					<div class="imgContainer">
-						<div class="imgBlock landscapeBlock">
-							<div class="topImg">
-								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
-								<img class="hoverImg shadow" alt="Auflaufform" onclick="showGallery()" data-src="img/gallery/auflaufformen_gruen.jpg"/>
-							</div>
-							<div class="bottomImg">
-								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
-								<img class="hoverImg shadow" alt="brottopf" onclick="showGallery()" data-src="img/gallery/brottopf.jpg"/>	
-							</div>
+					<div class="imgBlock">
+						<div class="imgContainer shadow">
+							<img class="landscape" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
 						</div>
-						<div class="imgBlock portraitBlock">
-							<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/portrait-placeholder.jpg"/>
-							<img class="hoverImg shadow" alt="Krug" onclick="showGallery()" data-src="img/gallery/krug2.jpg"/>
+						<div class="imgContainer shadow">
+							<img class="landscape" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottopf.jpg"/>
 						</div>
-						<div class="imgBlock portraitBlock">
-							<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/portrait-placeholder.jpg"/>
-							<img class="hoverImg shadow" alt="Krug" onclick="showGallery()" data-src="img/gallery/krug.jpg"/>
+						<div class="imgContainer shadow">
+							<img class="portrait" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug2.jpg"/>
 						</div>
-						<div class="imgBlock landscapeBlock">
-							<div class="topImg">
-								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
-								<img class="hoverImg shadow" alt="Tasse und Teller" onclick="showGallery()" data-src="img/gallery/tasse-teller.jpg"/>
-							</div>
-							<div class="bottomImg">
-								<img class="placeHolder" alt="" onclick="showGallery()" data-src="img/gallery/landscape-placeholder.jpg"/>
-								<img class="hoverImg shadow" alt="Quicheformen" onclick="showGallery()" data-src="img/gallery/auflaufformen_gruen.jpg"/>
-							</div>
+					</div>
+					<div class="imgBlock">
+						<div class="imgContainer shadow">
+							<img class="portrait" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug.jpg"/>
+						</div>
+						<div class="imgContainer shadow">
+							<img class="landscape" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse-teller.jpg"/>
+						</div>
+						<div class="imgContainer shadow">
+							<img class="landscape" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
 						</div>
 					</div>
 				</section>
@@ -97,9 +89,9 @@
 			          </div>
 			        </div>
 					<div class="galleryLargeContainer">
-						<a href="#" class="arrow left"></a>
-						<img class="shadow landscapeImg" alt="Auflaufform" data-src="img/gallery/auflaufformen_gruen.jpg"/>	
-						<a href="#" class="arrow right"></a>
+						<a href="#" class="arrow left" onclick="changeGalleryItem('prev')"></a>
+						<img class="shadow" id="largeGalleryImg" alt="Auflaufform" data-src="img/gallery/auflaufformen_gruen.jpg"/>	
+						<a href="#" class="arrow right" onclick="changeGalleryItem('next')"></a>
 					</div>
 				</section>
 				<section class="block" id="termine">
@@ -467,9 +459,39 @@
 				headerClassChanged = false;
 			}
 
-			function showGallery() {
+			function showGallery(elem) {
 				showSection("galerieLarge");
-				// todo: show specific image
+				const largeGalleryImg = document.getElementById("largeGalleryImg");
+				largeGalleryImg.src = elem.getAttribute("src");
+				if (elem.className === "landscape") {
+					largeGalleryImg.classList.remove("portrait");
+					largeGalleryImg.classList.add("landscape");
+				} else {
+					largeGalleryImg.classList.remove("landscape");
+					largeGalleryImg.classList.add("portrait");
+				}
+			}
+
+			const galleryImages = [
+				"img/gallery/auflaufformen_gruen.jpg",
+				"img/gallery/brottopf.jpg",
+				"img/gallery/krug2.jpg",
+				"img/gallery/krug.jpg",
+				"img/gallery/tasse-teller.jpg",
+			];
+
+			function changeGalleryItem(direction) {
+				const currentImg = document.getElementById("largeGalleryImg");
+				const index = galleryImages.indexOf(currentImg.getAttribute("src"));
+				console.log()
+
+				if (direction === "next") {
+					const newIndex = (index < (galleryImages.length - 1)) ? (index + 1) : 0;
+					currentImg.src = galleryImages[newIndex];
+				} else {
+					const newIndex = (index > 0) ? (index - 1) : (galleryImages.length - 1);
+					currentImg.src = galleryImages[newIndex];
+				}
 			}
     	</script>
     <!-- custom JS 

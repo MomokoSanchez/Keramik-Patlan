@@ -83,9 +83,7 @@ body {
 		.content {
 			width: 100%;
 			// todo: create mixin
-			-webkit-box-shadow: inset 1px 1px 7px 0px #c3c3c3;
-			-moz-box-shadow: inset 1px 1px 7px 0px #c3c3c3;
-			box-shadow: inset 1px 1px 7px 0px #c3c3c3;
+			@include box-shadow(inset 1px 1px 7px 0px #c3c3c3);
 			background-color: white;
 			#info {
 			  	#arrows {
@@ -102,9 +100,9 @@ body {
 						position: absolute;
 						width: 100%;
 						height: 100%;
-						border-left:$size/3 solid $main-yellow;
-						border-bottom:$size/3 solid $main-yellow;
-						@include transform(translate($size/3,$size*4/3)rotate(-45deg));
+						border-left: 2px solid black;
+						border-bottom: 2px solid black;
+						@include transform(translate($size/4,$size*4/3)rotate(-45deg));
 						animation: arrows $speed linear infinite;
 				    }
 				    &:after {
@@ -112,8 +110,8 @@ body {
 						position: absolute;
 						width:100%;
 						height:100%;
-						border-left:$size/3 solid $main-yellow;
-						border-bottom:$size/3 solid $main-yellow;
+						border-left: 2px solid black;
+						border-bottom: 2px solid black;
 						@include transform(translate($size*2/3,0px)rotate(-45deg));
 						animation: arrows $speed linear infinite $speed/-2;
 				    }
@@ -130,40 +128,34 @@ body {
 			}
 			#galerie {
 				margin-bottom: 0;
-				.imgContainer {
-					width: calc(100% + #{$default-margin});
+				.imgBlock {
 					display: flex;
 					flex-wrap: wrap;
-					margin-bottom: $default-margin; // instead of parent to not hide hoverImg. Maybe better solution possible
-					.imgBlock {
+					width: calc(100% + #{$default-margin});
+					.imgContainer {
 						position: relative;
-						&.landscapeBlock {
-							width: 51%;
-						}
-						&.portraitBlock {
-							width: 49%;
-						}
-						.topImg, .bottomImg {
-							position: relative;
-						}
+						width: calc(32% - #{$default-margin});
+						height: calc(40vh - #{$default-margin});
+						margin: $default-margin $default-margin 0 0;
+						overflow: hidden;
+						cursor: pointer;
+						transition: box-shadow 0.5s ease;
 						img {
-							width: calc(100% - #{$default-margin});
-							margin-top: $default-margin;
-							&.placeholder {
-								position: relative;
+							position: absolute;
+							left: 50%;
+							transform: translateX(-50%);
+							transition: transform 0.5s ease;
+							&.portrait {
+								width: 100%;
 							}
-							&.hoverImg {
-								@include transition(all 0.5s);
-								transition-timing-function: ease-in;
-								position: absolute;
-								top: 0;
-								left: 0;
-								cursor: pointer;
-								&:hover {
-									width: 100%;
-									margin-top: $default-margin-half;
-									margin-left: -$default-margin-half;
-								}
+							&.landscape {
+								height: 100%;
+							}
+						}
+						&:hover {
+							@include box-shadow(1px 1px 13px 0px #a5a5a5);
+							img {
+								transform: translateX(-50%) scale(1.1);
 							}
 						}
 					}
@@ -172,6 +164,7 @@ body {
 			#galerieLarge {
 				position: fixed;
 				height: 100vh;
+				width: calc(80% - #{$default-margin}*2); // check % vs vw
 				top: 0;
 				padding-top: 0;
 				background: white;
@@ -217,11 +210,13 @@ body {
     				transform: translateY(-50%);
 					img {
 						margin: 0 $default-margin 0 $default-margin;
-						&.landscapeImg {
+						&.landscape {
 							width: calc(100% - #{$default-margin}*2);
 						}
-						&.portraitImg {
-							height: 100%;
+						&.portrait {
+							height: calc(100vh - #{$default-margin}*2);
+							margin-left: 50%;
+    						transform: translateX(-50%);
 						}
 					}
 					.arrow {

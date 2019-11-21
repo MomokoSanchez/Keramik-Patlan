@@ -217,12 +217,12 @@ body .main .content #info #arrows:before {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-left: 6.6666666667px solid #FFEEB5;
-  border-bottom: 6.6666666667px solid #FFEEB5;
-  -webkit-transform: translate(6.6666666667px, 26.6666666667px) rotate(-45deg);
-  -moz-transform: translate(6.6666666667px, 26.6666666667px) rotate(-45deg);
-  -o-transform: translate(6.6666666667px, 26.6666666667px) rotate(-45deg);
-  transform: translate(6.6666666667px, 26.6666666667px) rotate(-45deg);
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  -webkit-transform: translate(5px, 26.6666666667px) rotate(-45deg);
+  -moz-transform: translate(5px, 26.6666666667px) rotate(-45deg);
+  -o-transform: translate(5px, 26.6666666667px) rotate(-45deg);
+  transform: translate(5px, 26.6666666667px) rotate(-45deg);
   animation: arrows 3s linear infinite;
 }
 body .main .content #info #arrows:after {
@@ -230,8 +230,8 @@ body .main .content #info #arrows:after {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-left: 6.6666666667px solid #FFEEB5;
-  border-bottom: 6.6666666667px solid #FFEEB5;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
   -webkit-transform: translate(13.3333333333px, 0px) rotate(-45deg);
   -moz-transform: translate(13.3333333333px, 0px) rotate(-45deg);
   -o-transform: translate(13.3333333333px, 0px) rotate(-45deg);
@@ -250,51 +250,44 @@ body .main .content #info p .infoTextUnterschrift {
 body .main .content #galerie {
   margin-bottom: 0;
 }
-body .main .content #galerie .imgContainer {
-  width: calc(100% + 40px);
+body .main .content #galerie .imgBlock {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  width: calc(100% + 40px);
 }
-body .main .content #galerie .imgContainer .imgBlock {
+body .main .content #galerie .imgBlock .imgContainer {
   position: relative;
-}
-body .main .content #galerie .imgContainer .imgBlock.landscapeBlock {
-  width: 51%;
-}
-body .main .content #galerie .imgContainer .imgBlock.portraitBlock {
-  width: 49%;
-}
-body .main .content #galerie .imgContainer .imgBlock .topImg, body .main .content #galerie .imgContainer .imgBlock .bottomImg {
-  position: relative;
-}
-body .main .content #galerie .imgContainer .imgBlock img {
-  width: calc(100% - 40px);
-  margin-top: 40px;
-}
-body .main .content #galerie .imgContainer .imgBlock img.placeholder {
-  position: relative;
-}
-body .main .content #galerie .imgContainer .imgBlock img.hoverImg {
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-  transition-timing-function: ease-in;
-  position: absolute;
-  top: 0;
-  left: 0;
+  width: calc(32% - 40px);
+  height: calc(40vh - 40px);
+  margin: 40px 40px 0 0;
+  overflow: hidden;
   cursor: pointer;
+  transition: box-shadow 0.5s ease;
 }
-body .main .content #galerie .imgContainer .imgBlock img.hoverImg:hover {
+body .main .content #galerie .imgBlock .imgContainer img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.5s ease;
+}
+body .main .content #galerie .imgBlock .imgContainer img.portrait {
   width: 100%;
-  margin-top: 20px;
-  margin-left: -20px;
+}
+body .main .content #galerie .imgBlock .imgContainer img.landscape {
+  height: 100%;
+}
+body .main .content #galerie .imgBlock .imgContainer:hover {
+  -webkit-box-shadow: 1px 1px 13px 0px #a5a5a5;
+  -moz-box-shadow: 1px 1px 13px 0px #a5a5a5;
+  box-shadow: 1px 1px 13px 0px #a5a5a5;
+}
+body .main .content #galerie .imgBlock .imgContainer:hover img {
+  transform: translateX(-50%) scale(1.1);
 }
 body .main .content #galerieLarge {
   position: fixed;
   height: 100vh;
+  width: calc(80% - 40px*2);
   top: 0;
   padding-top: 0;
   background: white;
@@ -346,11 +339,13 @@ body .main .content #galerieLarge .galleryLargeContainer {
 body .main .content #galerieLarge .galleryLargeContainer img {
   margin: 0 40px 0 40px;
 }
-body .main .content #galerieLarge .galleryLargeContainer img.landscapeImg {
+body .main .content #galerieLarge .galleryLargeContainer img.landscape {
   width: calc(100% - 40px*2);
 }
-body .main .content #galerieLarge .galleryLargeContainer img.portraitImg {
-  height: 100%;
+body .main .content #galerieLarge .galleryLargeContainer img.portrait {
+  height: calc(100vh - 40px*2);
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 body .main .content #galerieLarge .galleryLargeContainer .arrow {
   position: absolute;
@@ -473,47 +468,47 @@ body .main .content #footer a {
     max-height: 80px;
     top: 0;
     z-index: 2;
-    -webkit-transition: 0.8s ease-in-out;
-    -moz-transition: 0.8s ease-in-out;
-    -ms-transition: 0.8s ease-in-out;
-    -o-transition: 0.8s ease-in-out;
-    transition: 0.8s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
   body nav #navLogo {
     width: calc(100% - 100px);
     max-width: 300px;
   }
   body nav .navElements {
-    display: none;
+    visibility: hidden;
     opacity: 0;
-    -webkit-transition: opacity 0.8s ease-in-out;
-    -moz-transition: opacity 0.8s ease-in-out;
-    -ms-transition: opacity 0.8s ease-in-out;
-    -o-transition: opacity 0.8s ease-in-out;
-    transition: opacity 0.8s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
   }
   body nav.open {
-    height: initial;
+    height: 100%;
     max-height: 1000px;
-    -webkit-transition: 0.8s ease-in-out;
-    -moz-transition: 0.8s ease-in-out;
-    -ms-transition: 0.8s ease-in-out;
-    -o-transition: 0.8s ease-in-out;
-    transition: 0.8s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
   }
   body nav.open .navElements {
-    display: block;
+    visibility: visible;
     position: relative;
     transform: none;
     width: 100%;
     top: 0;
     text-align: center;
     opacity: 1;
-    -webkit-transition: opacity 0.8s ease-in-out;
-    -moz-transition: opacity 0.8s ease-in-out;
-    -ms-transition: opacity 0.8s ease-in-out;
-    -o-transition: opacity 0.8s ease-in-out;
-    transition: opacity 0.8s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
   }
   body nav #hamburger {
     display: block;
