@@ -60,24 +60,28 @@
 					</div>
 					<div class="imgBlock">
 						<div class="imgContainer shadow">
-							<img class="landscape" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
+							<img class="bottom" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_blau.jpg"/>
+							<img class="top" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="landscape" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottopf.jpg"/>
+							<img class="bottom" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug_becher.jpg"/>
+							<img class="top" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="portrait" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug2.jpg"/>
-						</div>
-					</div>
-					<div class="imgBlock">
-						<div class="imgContainer shadow">
-							<img class="portrait" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug.jpg"/>
+							<img class="bottom" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottoepfe_gruen.jpg"/>
+							<img class="top" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottopf.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="landscape" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse-teller.jpg"/>
+							<img class="bottom" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/rebhuehner.jpg"/>
+							<img class="top" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/katze.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="landscape" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
+							<img class="bottom" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_gruen.jpg"/>
+							<img class="top" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_teller.jpg"/>
+						</div>
+						<div class="imgContainer shadow">
+							<img class="bottom" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_gruen.jpg"/>
+							<img class="top" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_erdbeere.jpg"/>
 						</div>
 					</div>
 				</section>
@@ -177,20 +181,27 @@
 					</div>
 					<div class="blockContent">
 						<div class="kontaktImg shadow"></div>
-						<p class="kontaktText">
-							Ingrid & Carlos Patl&aacute;n<br/>
-							Damianstr. 25<br/>
-							94557 Niederalteich<br/>
-							keramik-patlan[at]web.de<br/>
+						<div class="kontaktText">
+							<img class="icon" alt="" src='./img/location.svg'>
+							<div class="iconText">
+								Ingrid & Carlos Patl&aacute;n<br/>
+								Damianstr. 25<br/>
+								94557 Niederalteich<br/>
+							</div>
+							<img class="icon" alt="" src='./img/email.svg'>
+							<div class="iconText">
+								keramik-patlan[at]web.de
+							</div>
 							<br/>
-							09901 - 90 38 40<br/>
-							<br/>
-							Besuchen Sie unser gerne in unserer Keramikwerkstatt oder auf einem der T&ouml;pferm&auml;rkte.
-							<br/>
-							Wir haben keine geregelten &Ouml;ffnungszeiten, sind aber unter der Woche normalerweise den ganzen Tag zu erreichen.
+							<img class="icon" alt="" src='./img/telephone.svg'>
+							<div class="iconText">
+								09901 - 90 38 40
+							</div>
+							<p>Besuchen Sie unser gerne in unserer Keramikwerkstatt oder auf einem der T&ouml;pferm&auml;rkte.</p>
+							<p>Wir haben keine geregelten &Ouml;ffnungszeiten, sind aber unter der Woche normalerweise den ganzen Tag zu erreichen.</p>
 							<span class="kontaktUnterschrift">Wir freuen uns auf Ihren Besuch!</span>
 							<img class="kontaktUnterschrift" alt="" src='./img/wir_freuen_uns_auf_ihren_besuch.jpg'>
-						</p>
+						</div>
 					</div>
 					<div class="map">
 						<script>
@@ -223,6 +234,8 @@
 					UStldNr. DE 130249090<br/><br/>
 					<h3>Urheberrechtliche Hinweise</h3>
 					Ingrid u. Carlos Patlan<br/>
+
+					<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
 				</section>
 				<section class="block hidden" id="datenschutzerklaerung">
 					<h2>Datenschutzerkl&auml;rung</h2> 
@@ -384,6 +397,14 @@
 			   			navKontaktClassChanged = true;
 			   		} 
 				});
+
+				// call random gallery function
+				randomizeGalleryImg(0);
+				randomizeGalleryImg(1);
+				randomizeGalleryImg(2);
+				randomizeGalleryImg(3);
+				randomizeGalleryImg(4);
+				randomizeGalleryImg(5);
 			})();
 
 			function hideNavMarker() {
@@ -457,6 +478,20 @@
 				document.getElementById("navLogo").classList.remove("fadeIn");
 				document.getElementById("navLogo").classList.add("fadeOut");
 				headerClassChanged = false;
+			}
+
+			// randomize gallery images
+			function randomizeGalleryImg(galleryItem) {
+			    var setFadeTimer = function() {
+					const galleryImage = document.getElementsByClassName("top")[galleryItem];
+					galleryImage.classList.toggle("fade");
+					const min = 1;
+					const max = 15;
+					const randomTime = (Math.floor((Math.random() * (max-min)) + min))* 1000;
+					console.log(randomTime);
+			        setTimeout(setFadeTimer, randomTime);
+			    }
+			    setFadeTimer();
 			}
 
 			function showGallery(elem) {

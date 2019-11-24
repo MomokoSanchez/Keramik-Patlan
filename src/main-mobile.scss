@@ -101,17 +101,23 @@
 					margin-top: calc(90vh - 100px);
 				}
 				.logoContainer {
-					-webkit-background-size: contain;
-				    -moz-background-size: contain;
-				    -o-background-size: contain;
-				    background-size: contain;
+					@include backgroundSize(contain);
 				}
 			}
 			.content {
 				position: inherit;
 				box-shadow: none;
-				#info p {
-					width: 100%;
+				#info {
+					p {
+						width: 100%;
+						.infoTextUnterschrift {
+							width: calc(100% - 80px);
+							max-width: 300px;
+						    margin: 60px 40px 0;
+						    position: absolute;
+						    right: 0;
+						}
+					}
 				}
 				#termine {
 					.termineImg {
@@ -119,6 +125,20 @@
 					}
 					.tableContainer {
 						margin-left: 0;
+					}
+				}
+				#galerie {
+					.imgBlock .imgContainer {
+						width: calc(50% - #{$default-margin});
+					}
+				}
+				#galerieLarge {
+					width: 100vw;
+					padding: 0;
+					.galleryLargeContainer {
+						width: 90%;
+						margin: 0 auto;
+						margin-top: 50vh;
 					}
 				}
 				#kontakt {
@@ -130,11 +150,13 @@
 							margin-bottom: $default-margin;
 						}
 						.kontaktText {
+							position: relative;
 							margin-left: 0;
 							width: 100%;
 							.kontaktUnterschrift {
 								width: 100%;
 								left: 0;
+								margin-top: $default-margin-half;
 							}
 						}
 					}

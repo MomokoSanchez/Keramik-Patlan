@@ -51,3 +51,10 @@
   	-o-transform: $transform;
   	transform: $transform;
 }
+
+@mixin backgroundSize($bgSize) {
+	-webkit-background-size: $bgSize;
+    -moz-background-size: $bgSize;
+    -o-background-size: $bgSize;
+    background-size: $bgSize;
+}

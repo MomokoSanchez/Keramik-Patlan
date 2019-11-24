@@ -111,7 +111,7 @@ html {
 }
 
 body nav {
-  background: linear-gradient(to right top, #445a7b, #566f90, #6b87a7, #7a98b7, #93acc3);
+  background: linear-gradient(to right top, #597092, #637c9c, #6b87a7, #7a98b7, #93acc3);
   position: fixed;
   width: 20%;
   height: 100%;
@@ -242,8 +242,8 @@ body .main .content #info p {
   width: 75%;
 }
 body .main .content #info p .infoTextUnterschrift {
-  width: 350px;
-  margin-top: 60px;
+  width: 300px;
+  margin-top: 50px;
   position: absolute;
   right: 15%;
 }
@@ -268,13 +268,20 @@ body .main .content #galerie .imgBlock .imgContainer img {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transition: transform 0.5s ease;
-}
-body .main .content #galerie .imgBlock .imgContainer img.portrait {
+  -webkit-transition: 0.8s ease-in;
+  -moz-transition: 0.8s ease-in;
+  -ms-transition: 0.8s ease-in;
+  -o-transition: 0.8s ease-in;
+  transition: 0.8s ease-in;
   width: 100%;
-}
-body .main .content #galerie .imgBlock .imgContainer img.landscape {
   height: 100%;
+  object-fit: cover;
+}
+body .main .content #galerie .imgBlock .imgContainer img.top {
+  opacity: 0;
+}
+body .main .content #galerie .imgBlock .imgContainer img.fade {
+  opacity: 1;
 }
 body .main .content #galerie .imgBlock .imgContainer:hover {
   -webkit-box-shadow: 1px 1px 13px 0px #a5a5a5;
@@ -338,12 +345,9 @@ body .main .content #galerieLarge .galleryLargeContainer {
 }
 body .main .content #galerieLarge .galleryLargeContainer img {
   margin: 0 40px 0 40px;
-}
-body .main .content #galerieLarge .galleryLargeContainer img.landscape {
-  width: calc(100% - 40px*2);
-}
-body .main .content #galerieLarge .galleryLargeContainer img.portrait {
-  height: calc(100vh - 40px*2);
+  max-width: calc(100% - 40px*2);
+  max-height: calc(100vh - 40px*2);
+  margin: 0 auto;
   margin-left: 50%;
   transform: translateX(-50%);
 }
@@ -434,9 +438,20 @@ body .main .content #kontakt .blockContent .kontaktImg {
   background-repeat: no-repeat;
 }
 body .main .content #kontakt .blockContent .kontaktText {
+  position: absolute;
+  display: inline-block;
   width: 50%;
-  padding: 0;
-  margin-left: 300px;
+  margin-left: 40px;
+}
+body .main .content #kontakt .blockContent .kontaktText p {
+  padding-top: 10px;
+}
+body .main .content #kontakt .blockContent .kontaktText .icon {
+  position: absolute;
+  width: 20px;
+}
+body .main .content #kontakt .blockContent .kontaktText .iconText {
+  margin: 0 0 20px 30px;
 }
 body .main .content #kontakt .blockContent .kontaktText .kontaktUnterschrift {
   width: 350px;
@@ -600,11 +615,30 @@ body .main .content #footer a {
   body .main .content #info p {
     width: 100%;
   }
+  body .main .content #info p .infoTextUnterschrift {
+    width: calc(100% - 80px);
+    max-width: 300px;
+    margin: 60px 40px 0;
+    position: absolute;
+    right: 0;
+  }
   body .main .content #termine .termineImg {
     display: none;
   }
   body .main .content #termine .tableContainer {
     margin-left: 0;
+  }
+  body .main .content #galerie .imgBlock .imgContainer {
+    width: calc(50% - 40px);
+  }
+  body .main .content #galerieLarge {
+    width: 100vw;
+    padding: 0;
+  }
+  body .main .content #galerieLarge .galleryLargeContainer {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50vh;
   }
   body .main .content #kontakt .blockContent {
     height: auto;
@@ -615,12 +649,14 @@ body .main .content #footer a {
     margin-bottom: 40px;
   }
   body .main .content #kontakt .blockContent .kontaktText {
+    position: relative;
     margin-left: 0;
     width: 100%;
   }
   body .main .content #kontakt .blockContent .kontaktText .kontaktUnterschrift {
     width: 100%;
     left: 0;
+    margin-top: 20px;
   }
   body .main .content #kontakt .map {
     margin-top: 60px;
