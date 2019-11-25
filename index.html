@@ -60,28 +60,28 @@
 					</div>
 					<div class="imgBlock">
 						<div class="imgContainer shadow">
-							<img class="bottom" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_blau.jpg"/>
-							<img class="top" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
+							<img class="thumbnail" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_blau.jpg"/>
+							<img class="thumbnail fadeImg" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="bottom" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug_becher.jpg"/>
-							<img class="top" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug.jpg"/>
+							<img class="thumbnail" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug_becher.jpg"/>
+							<img class="thumbnail fadeImg" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="bottom" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottoepfe_gruen.jpg"/>
-							<img class="top" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottopf.jpg"/>
+							<img class="thumbnail" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottoepfe_gruen.jpg"/>
+							<img class="thumbnail fadeImg" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottopf.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="bottom" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/rebhuehner.jpg"/>
-							<img class="top" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/katze.jpg"/>
+							<img class="thumbnail" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/rebhuehner.jpg"/>
+							<img class="thumbnail fadeImg" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/katze.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="bottom" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_gruen.jpg"/>
-							<img class="top" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_teller.jpg"/>
+							<img class="thumbnail" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_gruen.jpg"/>
+							<img class="thumbnail fadeImg" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_teller.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="bottom" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_gruen.jpg"/>
-							<img class="top" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_erdbeere.jpg"/>
+							<img class="thumbnail" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_gruen.jpg"/>
+							<img class="thumbnail fadeImg" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_erdbeere.jpg"/>
 						</div>
 					</div>
 				</section>
@@ -180,7 +180,7 @@
 						<h2>Kontakt</h2>
 					</div>
 					<div class="blockContent">
-						<div class="kontaktImg shadow"></div>
+						<img class="kontaktImg shadow" alt="" src='./img/kontaktPlaceholder2.jpg'></img>
 						<div class="kontaktText">
 							<img class="icon" alt="" src='./img/location.svg'>
 							<div class="iconText">
@@ -399,12 +399,13 @@
 				});
 
 				// call random gallery function
-				randomizeGalleryImg(0);
-				randomizeGalleryImg(1);
-				randomizeGalleryImg(2);
-				randomizeGalleryImg(3);
-				randomizeGalleryImg(4);
-				randomizeGalleryImg(5);
+				// shorter way to do this. much code reuse
+				setTimeout( function(){randomizeGalleryImg(0)}, randomDelay());
+				setTimeout( function(){randomizeGalleryImg(1)}, randomDelay());
+				setTimeout( function(){randomizeGalleryImg(2)}, randomDelay());
+				setTimeout( function(){randomizeGalleryImg(3)}, randomDelay());
+				setTimeout( function(){randomizeGalleryImg(4)}, randomDelay());
+				setTimeout( function(){randomizeGalleryImg(5)}, randomDelay());
 			})();
 
 			function hideNavMarker() {
@@ -481,17 +482,19 @@
 			}
 
 			// randomize gallery images
+			function randomDelay() {
+				const min = 10;
+				const max = 100;
+				return (Math.floor((Math.random() * (max-min)) + min))* 100;
+			}
+
 			function randomizeGalleryImg(galleryItem) {
 			    var setFadeTimer = function() {
-					const galleryImage = document.getElementsByClassName("top")[galleryItem];
+					const galleryImage = document.getElementsByClassName("fadeImg")[galleryItem];
 					galleryImage.classList.toggle("fade");
-					const min = 1;
-					const max = 15;
-					const randomTime = (Math.floor((Math.random() * (max-min)) + min))* 1000;
-					console.log(randomTime);
-			        setTimeout(setFadeTimer, randomTime);
 			    }
 			    setFadeTimer();
+			    setInterval(setFadeTimer, 10000);
 			}
 
 			function showGallery(elem) {
@@ -514,11 +517,19 @@
 				"img/gallery/krug.jpg",
 				"img/gallery/tasse-teller.jpg",
 			];
+			function getGalleryImages() {
+				const galleryImages = document.getElementsByClassName("thumbnail");
+				const imgList = [];
+				for(image of galleryImages) {
+					imgList.push(image.getAttribute("src"));
+				}
+				return imgList;
+			}
 
 			function changeGalleryItem(direction) {
 				const currentImg = document.getElementById("largeGalleryImg");
+				const galleryImages = getGalleryImages();
 				const index = galleryImages.indexOf(currentImg.getAttribute("src"));
-				console.log()
 
 				if (direction === "next") {
 					const newIndex = (index < (galleryImages.length - 1)) ? (index + 1) : 0;

@@ -422,29 +422,20 @@ body .main .content #termine .tableContainer table tr td:nth-child(even) a {
 body .main .content #termine .tableContainer table tr td:nth-child(even) a:hover {
   text-decoration: underline;
 }
-body .main .content #kontakt .blockContent {
-  height: 285px;
-}
 body .main .content #kontakt .blockContent .kontaktImg {
-  width: 250px;
-  height: 100%;
+  width: 300px;
+  height: 420px;
+  object-fit: cover;
   float: left;
-  background: url("../img/kontaktPlaceholder2.jpg");
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 body .main .content #kontakt .blockContent .kontaktText {
-  position: absolute;
+  position: relative;
   display: inline-block;
   width: 50%;
-  margin-left: 40px;
+  margin: 0 0 80px 40px;
 }
 body .main .content #kontakt .blockContent .kontaktText p {
-  padding-top: 10px;
+  padding: 10px 0 0 0;
 }
 body .main .content #kontakt .blockContent .kontaktText .icon {
   position: absolute;
@@ -457,10 +448,30 @@ body .main .content #kontakt .blockContent .kontaktText .kontaktUnterschrift {
   width: 350px;
   margin-top: 40px;
   position: absolute;
-  right: 15%;
 }
 body .main .content #kontakt .map {
   height: 400px;
+}
+@media (max-width: 960px) {
+  body .main .content #kontakt .blockContent {
+    height: auto;
+  }
+  body .main .content #kontakt .blockContent .kontaktImg {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 40px;
+  }
+  body .main .content #kontakt .blockContent .kontaktText {
+    position: relative;
+    margin-left: 0;
+    width: 100%;
+  }
+  body .main .content #kontakt .blockContent .kontaktText .kontaktUnterschrift {
+    width: 100%;
+    max-width: 430px;
+    left: 0;
+    margin-top: 20px;
+  }
 }
 body .main .content #footer {
   padding: 0;
@@ -639,26 +650,5 @@ body .main .content #footer a {
     width: 90%;
     margin: 0 auto;
     margin-top: 50vh;
-  }
-  body .main .content #kontakt .blockContent {
-    height: auto;
-  }
-  body .main .content #kontakt .blockContent .kontaktImg {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 40px;
-  }
-  body .main .content #kontakt .blockContent .kontaktText {
-    position: relative;
-    margin-left: 0;
-    width: 100%;
-  }
-  body .main .content #kontakt .blockContent .kontaktText .kontaktUnterschrift {
-    width: 100%;
-    left: 0;
-    margin-top: 20px;
-  }
-  body .main .content #kontakt .map {
-    margin-top: 60px;
   }
 }
