@@ -60,28 +60,28 @@
 					</div>
 					<div class="imgBlock">
 						<div class="imgContainer shadow">
-							<img class="thumbnail" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_blau.jpg"/>
-							<img class="thumbnail fadeImg" alt="Auflaufform" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen.jpg"/>
+							<img class="thumbnail" alt="Auflaufform blau" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_blau_small.jpg"/>
+							<img class="thumbnail fadeImg" alt="Auflaufform gruen" onclick="showGallery(this)" data-src="img/gallery/auflaufformen_gruen_small.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="thumbnail" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug_becher.jpg"/>
-							<img class="thumbnail fadeImg" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug.jpg"/>
+							<img class="thumbnail" alt="Krug mit Becher" onclick="showGallery(this)" data-src="img/gallery/krug_becher_small.jpg"/>
+							<img class="thumbnail fadeImg" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/krug_small.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="thumbnail" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottoepfe_gruen.jpg"/>
-							<img class="thumbnail fadeImg" alt="brottopf" onclick="showGallery(this)" data-src="img/gallery/brottopf.jpg"/>
+							<img class="thumbnail" alt="brottopf gruen" onclick="showGallery(this)" data-src="img/gallery/brottoepfe_gruen_small.jpg"/>
+							<img class="thumbnail fadeImg" alt="brottopf blau" onclick="showGallery(this)" data-src="img/gallery/brottopf_small.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="thumbnail" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/rebhuehner.jpg"/>
-							<img class="thumbnail fadeImg" alt="Krug" onclick="showGallery(this)" data-src="img/gallery/katze.jpg"/>
+							<img class="thumbnail" alt="Rebhuehner" onclick="showGallery(this)" data-src="img/gallery/rebhuehner_small.jpg"/>
+							<img class="thumbnail fadeImg" alt="Katze" onclick="showGallery(this)" data-src="img/gallery/katze_small.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="thumbnail" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_gruen.jpg"/>
-							<img class="thumbnail fadeImg" alt="Tasse und Teller" onclick="showGallery(this)" data-src="img/gallery/tasse_teller.jpg"/>
+							<img class="thumbnail" alt="Tasse gruen" onclick="showGallery(this)" data-src="img/gallery/tasse_gruen_small.jpg"/>
+							<img class="thumbnail fadeImg" alt="Tasse blau" onclick="showGallery(this)" data-src="img/gallery/tasse_teller_small.jpg"/>
 						</div>
 						<div class="imgContainer shadow">
-							<img class="thumbnail" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_gruen.jpg"/>
-							<img class="thumbnail fadeImg" alt="Quicheformen" onclick="showGallery(this)" data-src="img/gallery/quiche_erdbeere.jpg"/>
+							<img class="thumbnail" alt="Quicheform gruen" onclick="showGallery(this)" data-src="img/gallery/quiche_gruen_small.jpg"/>
+							<img class="thumbnail fadeImg" alt="Quicheformen mit Erdbeere" onclick="showGallery(this)" data-src="img/gallery/quiche_erdbeere_small.jpg"/>
 						</div>
 					</div>
 				</section>
@@ -357,10 +357,21 @@
 
 			   	// get scrollPosition
 				var browserHeight = window.innerHeight;
+				var scrollStart = 0;
+				var scrollDirection = "down";
 
 				window.addEventListener('scroll', function(e) {
 			   		var scrollPosition = window.scrollY;
 			   		var secHeights = getSectionHeights();
+
+
+			   		// get scroll direction
+					if (scrollPosition < scrollStart) {
+						scrollDirection = "up";
+					} else {
+						scrollDirection = "down";
+						scrollStart = scrollPosition;
+					}
 
 			   		// CTA arrow
 			   		if ((scrollPosition > (browserHeight * 0.1)) && !arrowClassChanged) {
@@ -374,8 +385,7 @@
 			   			fadeOutNavLogo();
 			   		}
 
-			   		// navMarker
-			   		if ((scrollPosition < secHeights.home) && !navHomeClassChanged) {
+			   		if ((scrollPosition < (secHeights.home)) && !navHomeClassChanged) {
 			   			hideNavMarker();
 			   			document.querySelectorAll('#toHome')[0].classList.add("showMarker");
 			   			navHomeClassChanged = true;
@@ -429,7 +439,8 @@
 
 			function getSectionHeights() {
 				// TODO: rerun on browser resize
-				const home = document.getElementById('home').scrollHeight;
+				var browserHeight = window.innerHeight;
+				const home = document.getElementById('home').scrollHeight - browserHeight/3;
 				const info = document.getElementById('info').scrollHeight + home;
 				const galerie = document.getElementById('galerie').scrollHeight + info;
 				const termine = document.getElementById('termine').scrollHeight + galerie;
@@ -495,12 +506,13 @@
 			    }
 			    setFadeTimer();
 			    setInterval(setFadeTimer, 10000);
+			    console.log("random!!");
 			}
 
 			function showGallery(elem) {
 				showSection("galerieLarge");
 				const largeGalleryImg = document.getElementById("largeGalleryImg");
-				largeGalleryImg.src = elem.getAttribute("src");
+				largeGalleryImg.src = elem.getAttribute("src").replace("_small", "");
 				if (elem.className === "landscape") {
 					largeGalleryImg.classList.remove("portrait");
 					largeGalleryImg.classList.add("landscape");
@@ -510,18 +522,11 @@
 				}
 			}
 
-			const galleryImages = [
-				"img/gallery/auflaufformen_gruen.jpg",
-				"img/gallery/brottopf.jpg",
-				"img/gallery/krug2.jpg",
-				"img/gallery/krug.jpg",
-				"img/gallery/tasse-teller.jpg",
-			];
 			function getGalleryImages() {
 				const galleryImages = document.getElementsByClassName("thumbnail");
 				const imgList = [];
 				for(image of galleryImages) {
-					imgList.push(image.getAttribute("src"));
+					imgList.push(image.getAttribute("src").replace("_small", ""));
 				}
 				return imgList;
 			}
