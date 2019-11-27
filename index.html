@@ -9,13 +9,21 @@
 	    <meta property="og:url" content="http://www.keramik-patlan.de" />
 	    <meta property="og:title" content="Keramikwerkstatt Patlan" />
 	    <meta property="og:description" content="Handgemachte Keramik für den täglichen Gebrauch" />
-	    <meta property="og:image" content="http://www.keramik-patlan.de/keramik-patlan/img/gallery/tasse-teller.jpg" />
+	    <meta property="og:image" content="http://www.keramik-patlan.de/keramik-patlan/img/gallery/tasse_teller_small.jpg" />
 
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300, 600" rel="stylesheet">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
     	<title>Keramik-Patlan</title>
+    	<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36947420-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-36947420-1');
+		</script>
 	</head>
 	<body>
 		<nav>
@@ -204,7 +212,7 @@
 						</div>
 					</div>
 					<div class="map">
-						<script>
+						<script async defer>
 							function initMap() {
 							  var daheim = {lat: 48.767046, lng: 13.021244};
 							  var map = new google.maps.Map(

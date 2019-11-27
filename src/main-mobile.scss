@@ -103,6 +103,9 @@
 				.logoContainer {
 					@include backgroundSize(contain);
 				}
+				.titleImg {	
+					@include fullBgImg('../img/title_mobile.jpg');
+				}
 			}
 			.content {
 				position: inherit;
