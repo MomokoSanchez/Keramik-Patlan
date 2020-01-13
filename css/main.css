@@ -449,6 +449,13 @@ body .main .content #kontakt .blockContent .kontaktText .icon {
 body .main .content #kontakt .blockContent .kontaktText .iconText {
   margin: 0 0 20px 30px;
 }
+body .main .content #kontakt .blockContent .kontaktText .iconText a {
+  text-decoration: none;
+  color: black;
+}
+body .main .content #kontakt .blockContent .kontaktText .iconText a:hover {
+  text-decoration: underline;
+}
 body .main .content #kontakt .blockContent .kontaktText .kontaktUnterschrift {
   width: 350px;
   margin-top: 40px;

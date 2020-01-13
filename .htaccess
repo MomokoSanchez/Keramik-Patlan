@@ -32,3 +32,11 @@ ExpiresDefault "access 1 month"
 	Header unset ETag
 	FileETag None
 </FilesMatch>
+
+#redirects old page new page
+Redirect 301 /infos.php http://www.keramik-patlan.de#info
+Redirect 301 /gallerie.php http://www.keramik-patlan.de#galerie
+Redirect 301 /maerkte.php http://www.keramik-patlan.de#termine
+Redirect 301 /kontakt.php http://www.keramik-patlan.de#kontakt
+Redirect 301 /datenschutz.php http://www.keramik-patlan.de#datenschutzerklaerung
+Redirect 301 /impressum.php http://www.keramik-patlan.de#impressum
